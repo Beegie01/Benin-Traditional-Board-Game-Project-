@@ -1,56 +1,940 @@
 
+
 import random
 import string
 
 class Board:
 
-    pot = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' ', 31: ' ', 32: ' ', 33: ' ', 34: ' ', 35: ' ', 36: ' ', 37: ' ', 38: ' ', 39: ' ', 40: ' ', 41: ' ', 42: ' ', 43: ' ', 44: ' ', 45: ' ', 46: ' ', 47: ' ', 48: ' '}
+    pot = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '}
 
     def __init__(self):
+        # pos [0: name, 1: dict, 2: number]
+        self.pot_1 = ['pot_1',
+                      {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '},
+                      1]
+        self.pot_2 = ['pot_2',
+                      {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '},
+                      2]
+        self.pot_3 = ['pot_3',
+                      {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '},
+                      3]
+        self.pot_4 = ['pot_4',
+                      {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '},
+                      4]
+        self.pot_5 = ['pot_5',
+                      {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '},
+                      5]
+        self.pot_6 = ['pot_6',
+                      {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '},
+                      6]
+        self.pot_7 = ['pot_7',
+                      {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '},
+                      7]
+        self.pot_8 = ['pot_8',
+                      {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '},
+                      8]
+        self.pot_9 = ['pot_9',
+                      {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '},
+                      9]
+        self.pot_10 = ['pot_10',
+                       {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '},
+                       10]
+        self.pot_11 = ['pot_11',
+                       {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '},
+                       11]
+        self.pot_12 = ['pot_12',
+                       {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '},
+                       12]
 
-        self.pot_1 = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' ', 31: ' ', 32: ' ', 33: ' ', 34: ' ', 35: ' ', 36: ' ', 37: ' ', 38: ' ', 39: ' ', 40: ' ', 41: ' ', 42: ' ', 43: ' ', 44: ' ', 45: ' ', 46: ' ', 47: ' ', 48: ' '}
-        self.pot_2 = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' ', 31: ' ', 32: ' ', 33: ' ', 34: ' ', 35: ' ', 36: ' ', 37: ' ', 38: ' ', 39: ' ', 40: ' ', 41: ' ', 42: ' ', 43: ' ', 44: ' ', 45: ' ', 46: ' ', 47: ' ', 48: ' '}
-        self.pot_3 = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' ', 31: ' ', 32: ' ', 33: ' ', 34: ' ', 35: ' ', 36: ' ', 37: ' ', 38: ' ', 39: ' ', 40: ' ', 41: ' ', 42: ' ', 43: ' ', 44: ' ', 45: ' ', 46: ' ', 47: ' ', 48: ' '}
-        self.pot_4 = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' ', 31: ' ', 32: ' ', 33: ' ', 34: ' ', 35: ' ', 36: ' ', 37: ' ', 38: ' ', 39: ' ', 40: ' ', 41: ' ', 42: ' ', 43: ' ', 44: ' ', 45: ' ', 46: ' ', 47: ' ', 48: ' '}
-        self.pot_5 = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' ', 31: ' ', 32: ' ', 33: ' ', 34: ' ', 35: ' ', 36: ' ', 37: ' ', 38: ' ', 39: ' ', 40: ' ', 41: ' ', 42: ' ', 43: ' ', 44: ' ', 45: ' ', 46: ' ', 47: ' ', 48: ' '}
-        self.pot_6 = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' ', 31: ' ', 32: ' ', 33: ' ', 34: ' ', 35: ' ', 36: ' ', 37: ' ', 38: ' ', 39: ' ', 40: ' ', 41: ' ', 42: ' ', 43: ' ', 44: ' ', 45: ' ', 46: ' ', 47: ' ', 48: ' '}
-        self.pot_7 = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' ', 31: ' ', 32: ' ', 33: ' ', 34: ' ', 35: ' ', 36: ' ', 37: ' ', 38: ' ', 39: ' ', 40: ' ', 41: ' ', 42: ' ', 43: ' ', 44: ' ', 45: ' ', 46: ' ', 47: ' ', 48: ' '}
-        self.pot_8 = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' ', 31: ' ', 32: ' ', 33: ' ', 34: ' ', 35: ' ', 36: ' ', 37: ' ', 38: ' ', 39: ' ', 40: ' ', 41: ' ', 42: ' ', 43: ' ', 44: ' ', 45: ' ', 46: ' ', 47: ' ', 48: ' '}
-        self.pot_9 = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' ', 31: ' ', 32: ' ', 33: ' ', 34: ' ', 35: ' ', 36: ' ', 37: ' ', 38: ' ', 39: ' ', 40: ' ', 41: ' ', 42: ' ', 43: ' ', 44: ' ', 45: ' ', 46: ' ', 47: ' ', 48: ' '}
-        self.pot_10 = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' ', 31: ' ', 32: ' ', 33: ' ', 34: ' ', 35: ' ', 36: ' ', 37: ' ', 38: ' ', 39: ' ', 40: ' ', 41: ' ', 42: ' ', 43: ' ', 44: ' ', 45: ' ', 46: ' ', 47: ' ', 48: ' '}
-        self.pot_11 = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' ', 31: ' ', 32: ' ', 33: ' ', 34: ' ', 35: ' ', 36: ' ', 37: ' ', 38: ' ', 39: ' ', 40: ' ', 41: ' ', 42: ' ', 43: ' ', 44: ' ', 45: ' ', 46: ' ', 47: ' ', 48: ' '}
-        self.pot_12 = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' ', 31: ' ', 32: ' ', 33: ' ', 34: ' ', 35: ' ', 36: ' ', 37: ' ', 38: ' ', 39: ' ', 40: ' ', 41: ' ', 42: ' ', 43: ' ', 44: ' ', 45: ' ', 46: ' ', 47: ' ', 48: ' '}
-
+        self.pots_name = {'pot_1': 1, 'pot_2': 2, 'pot_3': 3, 'pot_4': 4, 'pot_5': 5, 'pot_6': 6, 'pot_7': 7, 'pot_8': 8, 'pot_9': 9, 'pot_10': 10, 'pot_11': 11, 'pot_12': 12}
+        self.pots_no = {1: {self.pot_1[0]: self.pot_1[1]}, 2: {self.pot_2[0]: self.pot_2[1]}, 3: {self.pot_3[0]: self.pot_3[1]}, 4: {self.pot_4[0]: self.pot_4[1]}, 5: {self.pot_5[0]: self.pot_5[1]}, 6: {self.pot_6[0]: self.pot_6[1]}, 7: {self.pot_7[0]: self.pot_7[1]}, 8: {self.pot_8[0]: self.pot_8[1]}, 9: {self.pot_9[0]: self.pot_9[1]}, 10: {self.pot_10[0]: self.pot_10[1]}, 11: {self.pot_11[0]: self.pot_11[1]}, 12: {self.pot_12[0]: self.pot_12[1]}}
         section = []
 
 
-    def assign_sections(self, first_player, second_player):
-        first_player.pot_1 = self.pot_1
-        first_player.pot_2 = self.pot_2
-        first_player.pot_3 = self.pot_3
-        first_player.pot_4 = self.pot_4
-        first_player.pot_5 = self.pot_5
-        first_player.pot_6 = self.pot_6
-        second_player.pot_1 = self.pot_7
-        second_player.pot_2 = self.pot_8
-        second_player.pot_3 = self.pot_9
-        second_player.pot_4 = self.pot_10
-        second_player.pot_5 = self.pot_11
-        second_player.pot_6 = self.pot_12
+    def get_pot_from_no(self, pot_no):
+        '''
+        return corresponding pot (name, dict) from pot no
+        '''
+        if pot_no == self.pot_1[2]:
+            return self.pot_1[0], self.pot_1[1]
+        elif pot_no == self.pot_2[2]:
+            return self.pot_2[0], self.pot_2[1]
+        elif pot_no == self.pot_3[2]:
+            return self.pot_3[0], self.pot_3[1]
+        elif pot_no == self.pot_4[2]:
+            return self.pot_4[0], self.pot_4[1]
+        elif pot_no == self.pot_5[2]:
+            return self.pot_5[0], self.pot_5[1]
+        elif pot_no == self.pot_6[2]:
+            return self.pot_6[0], self.pot_6[1]
+        elif pot_no == self.pot_7[2]:
+            return self.pot_7[0], self.pot_7[1]
+        elif pot_no == self.pot_8[2]:
+            return self.pot_8[0], self.pot_8[1]
+        elif pot_no == self.pot_9[2]:
+            return self.pot_9[0], self.pot_9[1]
+        elif pot_no == self.pot_10[2]:
+            return self.pot_10[0], self.pot_10[1]
+        elif pot_no == self.pot_11[2]:
+            return self.pot_11[0], self.pot_11[1]
+        elif pot_no == self.pot_12[2]:
+            return self.pot_12[0], self.pot_12[1]
+
+    def get_pot_from_name(self, pot_name):
+        '''
+        return corresponding pot (dict, no) from pot name
+        '''
+        if pot_name == self.pot_1[0]:
+            return self.pot_1[1], self.pot_1[2]
+        elif pot_name == self.pot_2[0]:
+            return self.pot_2[1], self.pot_2[2]
+        elif pot_name == self.pot_3[0]:
+            return self.pot_3[1], self.pot_3[2]
+        elif pot_name == self.pot_4[0]:
+            return self.pot_4[1], self.pot_4[2]
+        elif pot_name == self.pot_5[0]:
+            return self.pot_5[1], self.pot_5[2]
+        elif pot_name == self.pot_6[0]:
+            return self.pot_6[1], self.pot_6[2]
+        elif pot_name == self.pot_7[0]:
+            return self.pot_7[1], self.pot_7[2]
+        elif pot_name == self.pot_8[0]:
+            return self.pot_8[1], self.pot_8[2]
+        elif pot_name == self.pot_9[0]:
+            return self.pot_9[1], self.pot_9[2]
+        elif pot_name == self.pot_10[0]:
+            return self.pot_10[1], self.pot_10[2]
+        elif pot_name == self.pot_11[0]:
+            return self.pot_11[1], self.pot_11[2]
+        elif pot_name == self.pot_12[0]:
+            return self.pot_12[1], self.pot_12[2]
+
+    def distribute_stones(self, current_player):
+        '''
+        immediately after player picks stones
+        use the pot name from which the current player last picked from to determine movement/direction of stone spread
+        '''
+        steps = len(current_player.hand)
+        count = 0
+        receiving_pot_dict = {}
+
+        #while count < steps:
+
+        # if player picked from pot 1
+        if current_player.last_picked_pot == self.pot_1[0]:
+            print(f"\nLast_picked: {current_player.last_picked_pot} \n{self.pot_1}")
+            pot_name_seq = [self.pot_2[0], self.pot_3[0], self.pot_4[0], self.pot_5[0], self.pot_6[0], self.pot_7[0], self.pot_8[0], self.pot_9[0], self.pot_10[0], self.pot_11[0], self.pot_12[0], self.pot_1[0]]
+            use_name = pot_name_seq[:steps]
+            print(use_name)
+            for pot_name in use_name:
+                if pot_name == self.pot_1[0]:
+                    fk = current_player.first_empty_key(self.pot_1)
+                    self.pot_1[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_2[0]:
+                    fk = current_player.first_empty_key(self.pot_2)
+                    self.pot_2[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_3[0]:
+                    fk = current_player.first_empty_key(self.pot_3)
+                    self.pot_3[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_4[0]:
+                    fk = current_player.first_empty_key(self.pot_4)
+                    self.pot_4[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_5[0]:
+                    fk = current_player.first_empty_key(self.pot_5)
+                    self.pot_5[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_6[0]:
+                    fk = current_player.first_empty_key(self.pot_6)
+                    self.pot_6[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_7[0]:
+                    fk = current_player.first_empty_key(self.pot_7)
+                    self.pot_7[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_8[0]:
+                    fk = current_player.first_empty_key(self.pot_8)
+                    self.pot_8[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_9[0]:
+                    fk = current_player.first_empty_key(self.pot_9)
+                    self.pot_9[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_10[0]:
+                    fk = current_player.first_empty_key(self.pot_10)
+                    self.pot_10[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_11[0]:
+                    fk = current_player.first_empty_key(self.pot_11)
+                    self.pot_11[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_12[0]:
+                    fk = current_player.first_empty_key(self.pot_12)
+                    self.pot_12[1][fk] = current_player.drop_stone()
+                    continue
+
+         # if player picked from pot 2
+        elif current_player.last_picked_pot == self.pot_2[0]:
+            pot_name_seq = [self.pot_3[0], self.pot_4[0], self.pot_5[0], self.pot_6[0], self.pot_7[0], self.pot_8[0], self.pot_9[0], self.pot_10[0], self.pot_11[0], self.pot_12[0], self.pot_1[0], self.pot_2[0]]
+            use_name = pot_name_seq[:steps]
+            print(use_name)
+            for pot_name in use_name:
+                if pot_name == self.pot_1[0]:
+                    fk = current_player.first_empty_key(self.pot_1)
+                    self.pot_1[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_2[0]:
+                    fk = current_player.first_empty_key(self.pot_2)
+                    self.pot_2[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_3[0]:
+                    fk = current_player.first_empty_key(self.pot_3)
+                    self.pot_3[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_4[0]:
+                    fk = current_player.first_empty_key(self.pot_4)
+                    self.pot_4[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_5[0]:
+                    fk = current_player.first_empty_key(self.pot_5)
+                    self.pot_5[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_6[0]:
+                    fk = current_player.first_empty_key(self.pot_6)
+                    self.pot_6[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_7[0]:
+                    fk = current_player.first_empty_key(self.pot_7)
+                    self.pot_7[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_8[0]:
+                    fk = current_player.first_empty_key(self.pot_8)
+                    self.pot_8[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_9[0]:
+                    fk = current_player.first_empty_key(self.pot_9)
+                    self.pot_9[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_10[0]:
+                    fk = current_player.first_empty_key(self.pot_10)
+                    self.pot_10[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_11[0]:
+                    fk = current_player.first_empty_key(self.pot_11)
+                    self.pot_11[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_12[0]:
+                    fk = current_player.first_empty_key(self.pot_12)
+                    self.pot_12[1][fk] = current_player.drop_stone()
+                    continue
+
+
+        # if player picked from pot 3
+        elif current_player.last_picked_pot == self.pot_3[0]:
+            pot_name_seq = [self.pot_4[0], self.pot_5[0], self.pot_6[0], self.pot_7[0], self.pot_8[0], self.pot_9[0], self.pot_10[0], self.pot_11[0], self.pot_12[0], self.pot_1[0], self.pot_2[0], self.pot_3[0]]
+            use_name = pot_name_seq[:steps]
+            print(use_name)
+            for pot_name in use_name:
+                if pot_name == self.pot_1[0]:
+                    fk = current_player.first_empty_key(self.pot_1)
+                    self.pot_1[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_2[0]:
+                    fk = current_player.first_empty_key(self.pot_2)
+                    self.pot_2[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_3[0]:
+                    fk = current_player.first_empty_key(self.pot_3)
+                    self.pot_3[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_4[0]:
+                    fk = current_player.first_empty_key(self.pot_4)
+                    self.pot_4[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_5[0]:
+                    fk = current_player.first_empty_key(self.pot_5)
+                    self.pot_5[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_6[0]:
+                    fk = current_player.first_empty_key(self.pot_6)
+                    self.pot_6[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_7[0]:
+                    fk = current_player.first_empty_key(self.pot_7)
+                    self.pot_7[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_8[0]:
+                    fk = current_player.first_empty_key(self.pot_8)
+                    self.pot_8[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_9[0]:
+                    fk = current_player.first_empty_key(self.pot_9)
+                    self.pot_9[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_10[0]:
+                    fk = current_player.first_empty_key(self.pot_10)
+                    self.pot_10[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_11[0]:
+                    fk = current_player.first_empty_key(self.pot_11)
+                    self.pot_11[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_12[0]:
+                    fk = current_player.first_empty_key(self.pot_12)
+                    self.pot_12[1][fk] = current_player.drop_stone()
+                    continue
+
+        # if player picked from pot 4
+        elif current_player.last_picked_pot == self.pot_4[0]:
+            pot_name_seq = [self.pot_5[0], self.pot_6[0], self.pot_7[0], self.pot_8[0], self.pot_9[0], self.pot_10[0], self.pot_11[0], self.pot_12[0], self.pot_1[0], self.pot_2[0], self.pot_3[0], self.pot_4[0]]
+            use_name = pot_name_seq[:steps]
+            print(use_name)
+            for pot_name in use_name:
+                if pot_name == self.pot_1[0]:
+                    fk = current_player.first_empty_key(self.pot_1)
+                    self.pot_1[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_2[0]:
+                    fk = current_player.first_empty_key(self.pot_2)
+                    self.pot_2[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_3[0]:
+                    fk = current_player.first_empty_key(self.pot_3)
+                    self.pot_3[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_4[0]:
+                    fk = current_player.first_empty_key(self.pot_4)
+                    self.pot_4[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_5[0]:
+                    fk = current_player.first_empty_key(self.pot_5)
+                    self.pot_5[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_6[0]:
+                    fk = current_player.first_empty_key(self.pot_6)
+                    self.pot_6[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_7[0]:
+                    fk = current_player.first_empty_key(self.pot_7)
+                    self.pot_7[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_8[0]:
+                    fk = current_player.first_empty_key(self.pot_8)
+                    self.pot_8[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_9[0]:
+                    fk = current_player.first_empty_key(self.pot_9)
+                    self.pot_9[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_10[0]:
+                    fk = current_player.first_empty_key(self.pot_10)
+                    self.pot_10[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_11[0]:
+                    fk = current_player.first_empty_key(self.pot_11)
+                    self.pot_11[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_12[0]:
+                    fk = current_player.first_empty_key(self.pot_12)
+                    self.pot_12[1][fk] = current_player.drop_stone()
+                    continue
+
+
+        # if player picked from pot 5
+        elif current_player.last_picked_pot == self.pot_5[0]:
+            pot_name_seq = [self.pot_6[0], self.pot_7[0], self.pot_8[0], self.pot_9[0], self.pot_10[0], self.pot_11[0], self.pot_12[0], self.pot_1[0], self.pot_2[0], self.pot_3[0], self.pot_4[0], self.pot_5[0]]
+            use_name = pot_name_seq[:steps]
+            print(use_name)
+            for pot_name in use_name:
+                if pot_name == self.pot_1[0]:
+                    fk = current_player.first_empty_key(self.pot_1)
+                    self.pot_1[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_2[0]:
+                    fk = current_player.first_empty_key(self.pot_2)
+                    self.pot_2[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_3[0]:
+                    fk = current_player.first_empty_key(self.pot_3)
+                    self.pot_3[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_4[0]:
+                    fk = current_player.first_empty_key(self.pot_4)
+                    self.pot_4[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_5[0]:
+                    fk = current_player.first_empty_key(self.pot_5)
+                    self.pot_5[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_6[0]:
+                    fk = current_player.first_empty_key(self.pot_6)
+                    self.pot_6[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_7[0]:
+                    fk = current_player.first_empty_key(self.pot_7)
+                    self.pot_7[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_8[0]:
+                    fk = current_player.first_empty_key(self.pot_8)
+                    self.pot_8[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_9[0]:
+                    fk = current_player.first_empty_key(self.pot_9)
+                    self.pot_9[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_10[0]:
+                    fk = current_player.first_empty_key(self.pot_10)
+                    self.pot_10[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_11[0]:
+                    fk = current_player.first_empty_key(self.pot_11)
+                    self.pot_11[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_12[0]:
+                    fk = current_player.first_empty_key(self.pot_12)
+                    self.pot_12[1][fk] = current_player.drop_stone()
+                    continue
+
+        # if player picked from pot 6
+        elif current_player.last_picked_pot == self.pot_6[0]:
+            pot_name_seq = [self.pot_7[0], self.pot_8[0], self.pot_9[0], self.pot_10[0], self.pot_11[0], self.pot_12[0], self.pot_1[0], self.pot_2[0], self.pot_3[0], self.pot_4[0], self.pot_5[0], self.pot_6[0]]
+            use_name = pot_name_seq[:steps]
+            print(use_name)
+            for pot_name in use_name:
+                if pot_name == self.pot_1[0]:
+                    fk = current_player.first_empty_key(self.pot_1)
+                    self.pot_1[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_2[0]:
+                    fk = current_player.first_empty_key(self.pot_2)
+                    self.pot_2[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_3[0]:
+                    fk = current_player.first_empty_key(self.pot_3)
+                    self.pot_3[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_4[0]:
+                    fk = current_player.first_empty_key(self.pot_4)
+                    self.pot_4[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_5[0]:
+                    fk = current_player.first_empty_key(self.pot_5)
+                    self.pot_5[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_6[0]:
+                    fk = current_player.first_empty_key(self.pot_6)
+                    self.pot_6[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_7[0]:
+                    fk = current_player.first_empty_key(self.pot_7)
+                    self.pot_7[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_8[0]:
+                    fk = current_player.first_empty_key(self.pot_8)
+                    self.pot_8[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_9[0]:
+                    fk = current_player.first_empty_key(self.pot_9)
+                    self.pot_9[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_10[0]:
+                    fk = current_player.first_empty_key(self.pot_10)
+                    self.pot_10[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_11[0]:
+                    fk = current_player.first_empty_key(self.pot_11)
+                    self.pot_11[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_12[0]:
+                    fk = current_player.first_empty_key(self.pot_12)
+                    self.pot_12[1][fk] = current_player.drop_stone()
+                    continue
+
+        # if player picked from pot 7
+        elif current_player.last_picked_pot == self.pot_7[0]:
+            pot_name_seq = [self.pot_8[0], self.pot_9[0], self.pot_10[0], self.pot_11[0], self.pot_12[0], self.pot_1[0], self.pot_2[0], self.pot_3[0], self.pot_4[0], self.pot_5[0], self.pot_6[0], self.pot_7[0]]
+            use_name = pot_name_seq[:steps]
+            print(use_name)
+            for pot_name in use_name:
+                if pot_name == self.pot_1[0]:
+                    fk = current_player.first_empty_key(self.pot_1)
+                    self.pot_1[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_2[0]:
+                    fk = current_player.first_empty_key(self.pot_2)
+                    self.pot_2[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_3[0]:
+                    fk = current_player.first_empty_key(self.pot_3)
+                    self.pot_3[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_4[0]:
+                    fk = current_player.first_empty_key(self.pot_4)
+                    self.pot_4[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_5[0]:
+                    fk = current_player.first_empty_key(self.pot_5)
+                    self.pot_5[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_6[0]:
+                    fk = current_player.first_empty_key(self.pot_6)
+                    self.pot_6[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_7[0]:
+                    fk = current_player.first_empty_key(self.pot_7)
+                    self.pot_7[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_8[0]:
+                    fk = current_player.first_empty_key(self.pot_8)
+                    self.pot_8[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_9[0]:
+                    fk = current_player.first_empty_key(self.pot_9)
+                    self.pot_9[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_10[0]:
+                    fk = current_player.first_empty_key(self.pot_10)
+                    self.pot_10[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_11[0]:
+                    fk = current_player.first_empty_key(self.pot_11)
+                    self.pot_11[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_12[0]:
+                    fk = current_player.first_empty_key(self.pot_12)
+                    self.pot_12[1][fk] = current_player.drop_stone()
+                    continue
+
+        # if player picked from pot 8
+        elif current_player.last_picked_pot == self.pot_8[0]:
+            pot_name_seq = [self.pot_9[0], self.pot_10[0], self.pot_11[0], self.pot_12[0], self.pot_1[0], self.pot_2[0], self.pot_3[0], self.pot_4[0], self.pot_5[0], self.pot_6[0], self.pot_7[0], self.pot_8[0]]
+            use_name = pot_name_seq[:steps]
+            print(use_name)
+            for pot_name in use_name:
+                if pot_name == self.pot_1[0]:
+                    fk = current_player.first_empty_key(self.pot_1)
+                    self.pot_1[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_2[0]:
+                    fk = current_player.first_empty_key(self.pot_2)
+                    self.pot_2[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_3[0]:
+                    fk = current_player.first_empty_key(self.pot_3)
+                    self.pot_3[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_4[0]:
+                    fk = current_player.first_empty_key(self.pot_4)
+                    self.pot_4[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_5[0]:
+                    fk = current_player.first_empty_key(self.pot_5)
+                    self.pot_5[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_6[0]:
+                    fk = current_player.first_empty_key(self.pot_6)
+                    self.pot_6[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_7[0]:
+                    fk = current_player.first_empty_key(self.pot_7)
+                    self.pot_7[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_8[0]:
+                    fk = current_player.first_empty_key(self.pot_8)
+                    self.pot_8[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_9[0]:
+                    fk = current_player.first_empty_key(self.pot_9)
+                    self.pot_9[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_10[0]:
+                    fk = current_player.first_empty_key(self.pot_10)
+                    self.pot_10[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_11[0]:
+                    fk = current_player.first_empty_key(self.pot_11)
+                    self.pot_11[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_12[0]:
+                    fk = current_player.first_empty_key(self.pot_12)
+                    self.pot_12[1][fk] = current_player.drop_stone()
+                    continue
+
+        # if player picked from pot 9
+        elif current_player.last_picked_pot == self.pot_9[0]:
+            pot_name_seq = [self.pot_10[0], self.pot_11[0], self.pot_12[0], self.pot_1[0], self.pot_2[0], self.pot_3[0], self.pot_4[0], self.pot_5[0], self.pot_6[0], self.pot_7[0], self.pot_8[0], self.pot_9[0]]
+            use_name = pot_name_seq[:steps]
+            print(use_name)
+            for pot_name in use_name:
+                if pot_name == self.pot_1[0]:
+                    fk = current_player.first_empty_key(self.pot_1)
+                    self.pot_1[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_2[0]:
+                    fk = current_player.first_empty_key(self.pot_2)
+                    self.pot_2[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_3[0]:
+                    fk = current_player.first_empty_key(self.pot_3)
+                    self.pot_3[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_4[0]:
+                    fk = current_player.first_empty_key(self.pot_4)
+                    self.pot_4[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_5[0]:
+                    fk = current_player.first_empty_key(self.pot_5)
+                    self.pot_5[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_6[0]:
+                    fk = current_player.first_empty_key(self.pot_6)
+                    self.pot_6[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_7[0]:
+                    fk = current_player.first_empty_key(self.pot_7)
+                    self.pot_7[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_8[0]:
+                    fk = current_player.first_empty_key(self.pot_8)
+                    self.pot_8[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_9[0]:
+                    fk = current_player.first_empty_key(self.pot_9)
+                    self.pot_9[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_10[0]:
+                    fk = current_player.first_empty_key(self.pot_10)
+                    self.pot_10[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_11[0]:
+                    fk = current_player.first_empty_key(self.pot_11)
+                    self.pot_11[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_12[0]:
+                    fk = current_player.first_empty_key(self.pot_12)
+                    self.pot_12[1][fk] = current_player.drop_stone()
+                    continue
+
+        # if player picked from pot 10
+        elif current_player.last_picked_pot == self.pot_10[0]:
+            pot_name_seq = [self.pot_11[0], self.pot_12[0], self.pot_1[0], self.pot_2[0], self.pot_3[0], self.pot_4[0], self.pot_5[0], self.pot_6[0], self.pot_7[0], self.pot_8[0], self.pot_9[0], self.pot_10[0]]
+            use_name = pot_name_seq[:steps]
+            print(use_name)
+            for pot_name in use_name:
+                if pot_name == self.pot_1[0]:
+                    fk = current_player.first_empty_key(self.pot_1)
+                    self.pot_1[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_2[0]:
+                    fk = current_player.first_empty_key(self.pot_2)
+                    self.pot_2[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_3[0]:
+                    fk = current_player.first_empty_key(self.pot_3)
+                    self.pot_3[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_4[0]:
+                    fk = current_player.first_empty_key(self.pot_4)
+                    self.pot_4[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_5[0]:
+                    fk = current_player.first_empty_key(self.pot_5)
+                    self.pot_5[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_6[0]:
+                    fk = current_player.first_empty_key(self.pot_6)
+                    self.pot_6[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_7[0]:
+                    fk = current_player.first_empty_key(self.pot_7)
+                    self.pot_7[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_8[0]:
+                    fk = current_player.first_empty_key(self.pot_8)
+                    self.pot_8[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_9[0]:
+                    fk = current_player.first_empty_key(self.pot_9)
+                    self.pot_9[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_10[0]:
+                    fk = current_player.first_empty_key(self.pot_10)
+                    self.pot_10[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_11[0]:
+                    fk = current_player.first_empty_key(self.pot_11)
+                    self.pot_11[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_12[0]:
+                    fk = current_player.first_empty_key(self.pot_12)
+                    self.pot_12[1][fk] = current_player.drop_stone()
+                    continue
+
+        # if player picked from pot 11
+        elif current_player.last_picked_pot == self.pot_11[0]:
+            pot_name_seq = [self.pot_12[0], self.pot_1[0], self.pot_2[0], self.pot_3[0], self.pot_4[0], self.pot_5[0], self.pot_6[0], self.pot_7[0], self.pot_8[0], self.pot_9[0], self.pot_10[0], self.pot_11[0]]
+            use_name = pot_name_seq[:steps]
+            print(use_name)
+            for pot_name in use_name:
+                if pot_name == self.pot_1[0]:
+                    fk = current_player.first_empty_key(self.pot_1)
+                    self.pot_1[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_2[0]:
+                    fk = current_player.first_empty_key(self.pot_2)
+                    self.pot_2[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_3[0]:
+                    fk = current_player.first_empty_key(self.pot_3)
+                    self.pot_3[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_4[0]:
+                    fk = current_player.first_empty_key(self.pot_4)
+                    self.pot_4[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_5[0]:
+                    fk = current_player.first_empty_key(self.pot_5)
+                    self.pot_5[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_6[0]:
+                    fk = current_player.first_empty_key(self.pot_6)
+                    self.pot_6[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_7[0]:
+                    fk = current_player.first_empty_key(self.pot_7)
+                    self.pot_7[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_8[0]:
+                    fk = current_player.first_empty_key(self.pot_8)
+                    self.pot_8[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_9[0]:
+                    fk = current_player.first_empty_key(self.pot_9)
+                    self.pot_9[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_10[0]:
+                    fk = current_player.first_empty_key(self.pot_10)
+                    self.pot_10[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_11[0]:
+                    fk = current_player.first_empty_key(self.pot_11)
+                    self.pot_11[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_12[0]:
+                    fk = current_player.first_empty_key(self.pot_12)
+                    self.pot_12[1][fk] = current_player.drop_stone()
+                    continue
+
+        # if player picked from pot 12
+        elif current_player.last_picked_pot == self.pot_12[0]:
+            pot_name_seq = [self.pot_1[0], self.pot_2[0], self.pot_3[0], self.pot_4[0], self.pot_5[0], self.pot_6[0], self.pot_7[0], self.pot_8[0], self.pot_9[0], self.pot_10[0], self.pot_11[0], self.pot_12[0]]
+            use_name = pot_name_seq[:steps]
+            print(use_name)
+            for pot_name in use_name:
+                if pot_name == self.pot_1[0]:
+                    fk = current_player.first_empty_key(self.pot_1)
+                    self.pot_1[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_2[0]:
+                    fk = current_player.first_empty_key(self.pot_2)
+                    self.pot_2[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_3[0]:
+                    fk = current_player.first_empty_key(self.pot_3)
+                    self.pot_3[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_4[0]:
+                    fk = current_player.first_empty_key(self.pot_4)
+                    self.pot_4[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_5[0]:
+                    fk = current_player.first_empty_key(self.pot_5)
+                    self.pot_5[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_6[0]:
+                    fk = current_player.first_empty_key(self.pot_6)
+                    self.pot_6[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_7[0]:
+                    fk = current_player.first_empty_key(self.pot_7)
+                    self.pot_7[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_8[0]:
+                    fk = current_player.first_empty_key(self.pot_8)
+                    self.pot_8[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_9[0]:
+                    fk = current_player.first_empty_key(self.pot_9)
+                    self.pot_9[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_10[0]:
+                    fk = current_player.first_empty_key(self.pot_10)
+                    self.pot_10[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_11[0]:
+                    fk = current_player.first_empty_key(self.pot_11)
+                    self.pot_11[1][fk] = current_player.drop_stone()
+                    continue
+
+                elif pot_name == self.pot_12[0]:
+                    fk = current_player.first_empty_key(self.pot_12)
+                    self.pot_12[1][fk] = current_player.drop_stone()
+                    continue
 
 
 
-class Player:
+
+
+class Player(Board):
 
     # USEFUL DATA
     def __init__(self, name):
+
         Board.__init__(self)
+
         # name of player instance
-        self.name = name
+        self.name = name.upper()
+
         # list of stones in player's hands
         self.hand = []
-        # total number of stones
-        self.total_stones = 0
+
+        # total number of stones on player's side of the board
+        self.board_stones = 0
+
         # player's pots for stones
         self.pot_1 = None
         self.pot_2 = None
@@ -58,34 +942,233 @@ class Player:
         self.pot_4 = None
         self.pot_5 = None
         self.pot_6 = None
+
         # storage for stones claimed from the opponent
         self.captured_stones = []
-        # cllection of player's six pots
-        self.section = [self.pot_1, self.pot_2, self.pot_3, self.pot_4, self.pot_5, self.pot_6]
+
+        # name of last pot player picked from
+        self.last_picked_pot = None
 
 
     # METHODS
+    def pick_coin_sides(self):
+
+        print(f"{self.name} choose HEAD or TAIL")
+        acc_range = ['head', 'h', 'tail', 't']
+        pick = None
+        while pick not in acc_range:
+            val = input("Enter H for head, or T for tail:\n")
+
+            try:
+                pick = val.lower()
+            except:
+                print(f"{val} is invalid!")
+                continue
+
+            if pick not in acc_range:
+                print(f"{pick} is out of range!")
+                continue
+
+            if pick == 'h' or pick == 'head':
+                print(f"{self.name} picks HEAD")
+                return 'HEAD'
+            else:
+                print(f"{self.name} picks TAIL")
+                return 'TAIL'
+
+    def coin_toss(self):
+        coin = ['HEAD', 'TAIL']
+        return random.choice(coin)
+
+    def game_starter(self, picked_side, player1, player2):
+
+        toss_result = self.coin_toss()
+
+        print(f"\n{self.name} FLIPS COIN!\n{toss_result} emerges!")
+
+        if picked_side == toss_result:
+            print(f"{player1.name} STARTS!")
+            return player1.name
+        else:
+            print(f"{player2.name} STARTS!")
+            return player2.name
+
+    def assign_sections(self, board, first_player, second_player):
+        first_player.pot_1 = board.pot_1
+        first_player.pot_2 = board.pot_2
+        first_player.pot_3 = board.pot_3
+        first_player.pot_4 = board.pot_4
+        first_player.pot_5 = board.pot_5
+        first_player.pot_6 = board.pot_6
+        second_player.pot_1 = board.pot_12
+        second_player.pot_2 = board.pot_11
+        second_player.pot_3 = board.pot_10
+        second_player.pot_4 = board.pot_9
+        second_player.pot_5 = board.pot_8
+        second_player.pot_6 = board.pot_7
+
+    def pot_fill(self, pot):
+        '''
+        input is pot object
+        fill up empty cell in a pot
+        '''
+        first_key = self.first_empty_key(pot)
+        pot[1][first_key] = 'O'
+
+        second_key = self.first_empty_key(pot)
+        pot[1][second_key] = 'O'
+
+        third_key = self.first_empty_key(pot)
+        pot[1][third_key] = 'O'
+
+        fourth_key = self.first_empty_key(pot)
+        pot[1][fourth_key] = 'O'
+
+    def first_empty_key(self, pot):
+        '''
+        input is a pot_obj
+        returns the first empty cell in a pot
+        '''
+        keys = []
+        for k,v in pot[1].items():
+            if v == ' ':
+                keys.append(k)
+            else:
+                continue
+        return keys[0]
+
+
+    def empty_keys(self, pot):
+        '''
+        input is a pot_obj
+        counts the number of empty cells in a pot
+        '''
+        empty_cells = 0
+        for k,v in pot[1].items():
+            if v == ' ':
+                empty_cells += 1
+            else:
+                continue
+        return empty_cells
+
+    def fp_prompt_pot_no(self):
+        '''
+        first player selects which of his pots to pick from
+        '''
+        print(f"{self.name} TURN:\n\nChoose pot to pick from?")
+        acc_range = range(1,7)
+        pick = -1
+
+        while pick not in acc_range:
+            val = input("Select a non-empty pot between 1-6:\n")
+            try:
+                pick = int(val)
+            except:
+                print(f"{val} is invalid!")
+                continue
+            if pick not in acc_range:
+                print(f"{pick} is out of range!")
+                continue
+            return pick
+
+    def fp_select_pot(board):
+        '''
+        converts first player's pick (1-6) into their corresponding pot instance
+        outputs the pot_name, pot_object and number
+        '''
+
+        pick = board.fp_prompt_pot_no()
+
+        if pick == board.pot_1[2]:
+            return board.pot_1[0], board.pot_1,  pick
+        elif pick == board.pot_2[2]:
+            return board.pot_2[0], board.pot_2, pick
+        elif pick == board.pot_3[2]:
+            return board.pot_3[0], board.pot_3,  pick
+        elif pick == board.pot_4[2]:
+            return board.pot_4[0], board.pot_4,  pick
+        elif pick == board.pot_5[2]:
+            return board.pot_5[0], board.pot_5, pick
+        elif pick == board.pot_6[2]:
+            return board.pot_6[0], board.pot_6, pick
+
+    def sp_prompt_pot_no(self):
+        '''
+        second player selects which of his pots to pick from
+        '''
+        print(f"{self.name} TURN:\n\nChoose pot to pick from?")
+        acc_range = range(7,13)
+        pick = -1
+
+        while pick not in acc_range:
+            val = input("Select a non-empty pot between 7-12:\n")
+            try:
+                pick = int(val)
+            except:
+                print(f"{val} is invalid!")
+                continue
+            if pick not in acc_range:
+                print(f"{pick} is out of range!")
+                continue
+            return pick
+
+    def sp_select_pot(board):
+        '''
+        converts second player's pick (7-12) into their corresponding pot instance
+        outputs the pot_name, pot_object and number
+        '''
+
+        pick = board.sp_prompt_pot_no()
+
+        if pick == board.pot_12[2]:
+            return board.pot_12[0], board.pot_12, pick
+        elif pick == board.pot_11[2]:
+            return board.pot_11[0], board.pot_11, pick
+        elif pick == board.pot_10[2]:
+            return board.pot_10[0], board.pot_10, pick
+        elif pick == board.pot_9[2]:
+            return board.pot_9[0], board.pot_9, pick
+        elif pick == board.pot_8[2]:
+            return board.pot_8[0], board.pot_8, pick
+        elif pick == board.pot_7[2]:
+            return board.pot_7[0], board.pot_7, pick
+
+    def check_if_empty(self, chosen_pot):
+        '''
+        check to see if pot is empty
+        '''
+
+        ek_count = self.empty_keys(chosen_pot)
+        if ek_count == 48:
+            print(f"{self.name} IS TRYING TO PICK FROM AN EMPTY POT")
+            return True
+        return False
+
+
     def section_stones(self):
         '''
         place all the stones in a player's section in one list (container)
         counts only stones, ignoring whitespaces
         '''
         container = []
-        container.extend(list(self.pot_1.values()))
-        container.extend(list(self.pot_2.values()))
-        container.extend(list(self.pot_3.values()))
-        container.extend(list(self.pot_4.values()))
-        container.extend(list(self.pot_5.values()))
-        container.extend(list(self.pot_6.values()))
+        container.extend(list(self.pot_1[1].values()))
+        container.extend(list(self.pot_2[1].values()))
+        container.extend(list(self.pot_3[1].values()))
+        container.extend(list(self.pot_4[1].values()))
+        container.extend(list(self.pot_5[1].values()))
+        container.extend(list(self.pot_6[1].values()))
+
 
         stones = ''
-        for i in container:
-            if i not in string.ascii_letters:
+        for char in container:
+            if char != 'O':
                 continue
             else:
-                stones += i
-        print(f"{self.name} has {len(stones)} stones in his section")
+                stones += char
+        self.board_stones = len(stones)
         return len(stones)
+
+
 
     def pot_stones(self, pot):
         '''
@@ -102,33 +1185,15 @@ class Player:
         print(f"{self.name} has {len(stones)} in the pot")
         return len(stones)
 
-    def select_pot(self):
-        '''
-        player selects which of his pots to pick from
-        '''
-        print(f"{self.name}, which pot do you want to pick from?")
-        acc_range = range(1,7)
-        pick = -1
-
-        while pick not in acc_range:
-            val = input("Select a non-empty pot between 1-6:\n")
-            try:
-                pick = int(val)
-            except:
-                print(f"{val} is invalid!")
-                continue
-            if pick not in acc_range:
-                print(f"{pick} is out of range!")
-                continue
-            return pick
-
     def from_pot_to_hand(self, feeder_pot):
         '''
+        input is board pot object
         transfers stones from pot to hand
         and pot becomes empty
         '''
+
         listed = []
-        listed.extend(list(feeder_pot.values()))
+        listed.extend(list(feeder_pot[1].values()))
         stones = []
         string = ''
         for char in listed:
@@ -140,15 +1205,15 @@ class Player:
 
         self.hand += stones
         self.reset_pot(feeder_pot)
-        print(f"{self.name} hands: {self.hand}")
-        return self.hand
+        self.last_picked_pot = feeder_pot[0]
+        return print(f"{self.name} picked from {feeder_pot[0]}")
 
 
     def reset_pot(self, pot):
         '''
         resets a pot's content
         '''
-        pot.update(Board.pot)
+        pot[1].update(Board.pot)
 
     def drop_stone(self):
         '''
@@ -159,25 +1224,48 @@ class Player:
         except IndexError:
             print(f"{self.name} has {len(self.hand)} in his hand")
 
-    def first_empty_key(self, pot):
+    def share_stones(self, receiving_pot_dicts):
         '''
-        returns the first empty cell in a pot
+        fill up the first empty cells in the given list of pot dicts
         '''
-        keys = []
-        for k,v in pot.items():
-            if v == ' ':
-                keys.append(k)
-            else:
-                continue
-        print(f"The first available key is at {keys[0]}")
-        return keys[0]
+
+        # Nothing happens on the board if player's hand is empty
+        if len(self.hand) < 1:
+            return print(f"\nNo more stones in {self.name}'s hand to drop.\nPlease refill hand from a non-empty pot!")
+
+        try:
+            list(receiving_pot_dicts)
+        except:
+            print("\nError: wrong input!")
+
+        # Nothing happens if input is not a list
+        if type(receiving_pot_dicts) != type([]):
+            return print(f"Error: input is not a list of dicts!")
+
+        # enlisting all the given pots
+        receiving_pot_dicts
+        emp_keys_list = []
+
+        if len(self.hand) != len(receiving_pot_dicts):
+            return print(f"Error:\n{self.name} is trying to share {len(self.hand)} stones into {len(receiving_pot_dicts)} pots!")
+
+        # determining the first empty keys in each of the pots in the list
+        for pot_dict in receiving_pot_dicts:
+            emp_keys_list.append(self.first_empty_key(pot_dict))
+
+        # dropping a stone from player's hand into each of the first empty keys of the given pots
+        for pot_dict in receiving_pot_dicts:
+            for k in emp_keys_list:
+                pot_dict[k] = self.drop_stone()
+                break
 
     def occupied_keys(self, pot):
         '''
+        input is a pot_object
         returns a list of occupied cells in a pot
         '''
         keys = []
-        for k,v in pot.items():
+        for k,v in pot[1].items():
             if v == 'O':
                 keys.append(k)
             else:
@@ -185,61 +1273,6 @@ class Player:
         print(f"This pot contains {len(keys)} stones at {keys}")
         return keys
 
-
-    def empty_keys(self, pot):
-        '''
-        returns the number of empty cells in a pot
-        '''
-        empty_cells = 0
-        for k,v in pot.items():
-            if v == ' ':
-                empty_cells += 1
-            else:
-                continue
-        print(f"There are {empty_cells} empty cells in the dict")
-        return empty_cells
-
-    def pot_fill(self, pot):
-        '''
-        fill up empty cell in a pot
-        '''
-        first_key = self.first_empty_key(pot)
-        pot[first_key] = 'O'
-
-        second_key = self.first_empty_key(pot)
-        pot[second_key] = 'O'
-
-        third_key = self.first_empty_key(pot)
-        pot[third_key] = 'O'
-
-        fourth_key = self.first_empty_key(pot)
-        pot[fourth_key] = 'O'
-
-    def share_stones(self, *receiving_pots):
-        '''
-        fill up the first empty cells in the given number of pots
-        '''
-
-        # Nothing happens on the board if player's hand is empty
-        if len(self.hand) < 1:
-            return print(f"No more stones in {self.name}'s hand to drop.\nPlease refill hand from a non-empty pot!")
-
-        # enlisting all the given pots
-        pot_list = list(receiving_pots)
-        emp_keys_list = []
-
-        if len(self.hand) != len(pot_list):
-            return print(f"Error:\n{self.name} is trying to share {len(self.hand)} stones into {len(pot_list)} pots!")
-
-        # determining the first empty keys in each of the pots in the list
-        for pot in pot_list:
-            emp_keys_list.append(self.first_empty_key(pot))
-
-        # dropping a stone from player's hand into each of the first empty keys of the given pots
-        for pot in pot_list:
-            for k in emp_keys_list:
-                pot[k] = self.drop_stone()
-                break
 
 
     def play_on(self):
@@ -250,53 +1283,49 @@ class Player:
     def quick_check(self):
         while True:
             print("\nScreen Pause!")
-            val = input("\nPress Enter to continue, or 'e' to exit game:")
+            val = input("\nPress Enter to continue, or 'e' to exit game:\n")
 
             acc_range = ['', 'e', 'exit']
-            if val not in acc_range:
+            if val.lower() not in acc_range:
                 print(f"\n{val} is not valid!")
                 continue
             else:
                 if val.lower() == '':
+                    '\n'
                     return True
                 elif val.lower() in ['e', 'exit']:
                     return self.exit_play()
 
     def exit_play(self):
-        print(f"{self.name}, thanks for playing!")
+        print(f"\n\nThanks for playing!")
         quit()
 
 
-
-
 # FUNCTIONS
+def board_view(board, player1, player2):
+    print("\n","\t"*4,f"{player1.name}'s POTS: 1, 2, 3, 4, 5, 6 \nFIRST PLAYER: {player1.name}")
+    print("___________________________________________________________________________")
+    print(f"Board: {player1.section_stones()} stones\nHand: {len(player1.hand)} stones\nCaptured: {len(player1.captured_stones)} stones\nTOTAL: {player1.section_stones()+len(player1.hand)+len(player1.captured_stones)} stones\n")
+    print("  POT 1","      POT 2", "      POT 3", "      POT 4", "      POT 5", "      POT 6")
+    print(' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ')
+    print('|', board.pot_1[1][1], board.pot_1[1][2], board.pot_1[1][3], board.pot_1[1][4], '|', '|', board.pot_2[1][1], board.pot_2[1][2], board.pot_2[1][3], board.pot_2[1][4], '|', '|', board.pot_3[1][1], board.pot_3[1][2], board.pot_3[1][3], board.pot_3[1][4], '|', '|',  board.pot_4[1][1], board.pot_4[1][2], board.pot_4[1][3], board.pot_4[1][4], '|', '|', board.pot_5[1][1], board.pot_5[1][2], board.pot_5[1][3], board.pot_5[1][4], '|', '|', board.pot_6[1][1], board.pot_6[1][2], board.pot_6[1][3], board.pot_6[1][4], '|')
+    print('|', board.pot_1[1][5], board.pot_1[1][6], board.pot_1[1][7], board.pot_1[1][8], '|', '|', board.pot_2[1][5], board.pot_2[1][6], board.pot_2[1][7], board.pot_2[1][8], '|', '|', board.pot_3[1][5], board.pot_3[1][6], board.pot_3[1][7], board.pot_3[1][8], '|', '|', board.pot_4[1][5], board.pot_4[1][6], board.pot_4[1][7], board.pot_4[1][8], '|', '|',  board.pot_5[1][5], board.pot_5[1][6], board.pot_5[1][7], board.pot_5[1][8], '|', '|', board.pot_6[1][5], board.pot_6[1][6], board.pot_6[1][7], board.pot_6[1][8], '|')
+    print('|', board.pot_1[1][9], board.pot_1[1][10], board.pot_1[1][11], board.pot_1[1][12], '|', '|', board.pot_2[1][9], board.pot_2[1][10], board.pot_2[1][11], board.pot_2[1][12], '|', '|', board.pot_3[1][9], board.pot_3[1][10], board.pot_3[1][11], board.pot_3[1][12], '|', '|', board.pot_4[1][9], board.pot_4[1][10], board.pot_4[1][11], board.pot_4[1][12], '|', '|', board.pot_5[1][9], board.pot_5[1][10], board.pot_5[1][11], board.pot_5[1][12], '|', '|', board.pot_6[1][9], board.pot_6[1][10], board.pot_6[1][11], board.pot_6[1][12], '|')
+    print('|', board.pot_1[1][13], board.pot_1[1][14], board.pot_1[1][15], board.pot_1[1][16], '|', '|', board.pot_2[1][13], board.pot_2[1][14], board.pot_2[1][15], board.pot_2[1][16], '|', '|', board.pot_3[1][13], board.pot_3[1][14], board.pot_3[1][15], board.pot_3[1][16],'|', '|', board.pot_4[1][13], board.pot_4[1][14], board.pot_4[1][15], board.pot_4[1][16], '|', '|', board.pot_5[1][13], board.pot_5[1][14], board.pot_5[1][15], board.pot_5[1][16], '|', '|', board.pot_6[1][13], board.pot_6[1][14], board.pot_6[1][15], board.pot_6[1][16], '|')
+    print('|', board.pot_1[1][17], board.pot_1[1][18], board.pot_1[1][19], board.pot_1[1][20], '|', '|', board.pot_2[1][17], board.pot_2[1][18], board.pot_2[1][19], board.pot_2[1][20], '|', '|', board.pot_3[1][17], board.pot_3[1][18], board.pot_3[1][19], board.pot_3[1][20], '|', '|', board.pot_4[1][17], board.pot_4[1][18], board.pot_4[1][19], board.pot_4[1][20], '|', '|', board.pot_5[1][17], board.pot_5[1][18], board.pot_5[1][19], board.pot_5[1][20], '|', '|', board.pot_6[1][17], board.pot_6[1][18], board.pot_6[1][19], board.pot_6[1][20], '|')
+    print('|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '\n')
+    print(' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ')
+    print('|', board.pot_12[1][1], board.pot_12[1][2], board.pot_12[1][3], board.pot_12[1][4], '|', '|', board.pot_11[1][1], board.pot_11[1][2], board.pot_11[1][3], board.pot_11[1][4], '|', '|', board.pot_10[1][1], board.pot_10[1][2], board.pot_10[1][3], board.pot_10[1][4], '|', '|',  board.pot_9[1][1], board.pot_9[1][2], board.pot_9[1][3], board.pot_9[1][4], '|', '|', board.pot_8[1][1], board.pot_8[1][2], board.pot_8[1][3], board.pot_8[1][4], '|', '|', board.pot_7[1][1], board.pot_7[1][2], board.pot_7[1][3], board.pot_7[1][4], '|')
+    print('|', board.pot_12[1][5], board.pot_12[1][6], board.pot_12[1][7], board.pot_12[1][8], '|', '|', board.pot_11[1][5], board.pot_11[1][6], board.pot_11[1][7], board.pot_11[1][8], '|', '|', board.pot_10[1][5], board.pot_10[1][6], board.pot_10[1][7], board.pot_10[1][8], '|', '|', board.pot_9[1][5], board.pot_9[1][6], board.pot_9[1][7], board.pot_9[1][8], '|', '|',  board.pot_8[1][5], board.pot_8[1][6], board.pot_8[1][7], board.pot_8[1][8], '|', '|', board.pot_7[1][5], board.pot_7[1][6], board.pot_7[1][7], board.pot_7[1][8], '|')
+    print('|', board.pot_12[1][9], board.pot_12[1][10], board.pot_12[1][11], board.pot_12[1][12], '|', '|', board.pot_11[1][9], board.pot_11[1][10], board.pot_11[1][11], board.pot_11[1][12], '|', '|', board.pot_10[1][9], board.pot_10[1][10], board.pot_10[1][11], board.pot_10[1][12], '|', '|', board.pot_9[1][9], board.pot_9[1][10], board.pot_9[1][11], board.pot_9[1][12], '|', '|', board.pot_8[1][9], board.pot_8[1][10], board.pot_8[1][11], board.pot_8[1][12], '|', '|', board.pot_7[1][9], board.pot_7[1][10], board.pot_7[1][11], board.pot_7[1][12], '|')
+    print('|', board.pot_12[1][13], board.pot_12[1][14], board.pot_12[1][15], board.pot_12[1][16], '|', '|', board.pot_11[1][13], board.pot_11[1][14], board.pot_11[1][15], board.pot_11[1][16], '|', '|', board.pot_10[1][13], board.pot_10[1][14], board.pot_10[1][15], board.pot_10[1][16],'|', '|', board.pot_9[1][13], board.pot_9[1][14], board.pot_9[1][15], board.pot_9[1][16], '|', '|', board.pot_8[1][13], board.pot_8[1][14], board.pot_8[1][15], board.pot_8[1][16], '|', '|', board.pot_7[1][13], board.pot_7[1][14], board.pot_7[1][15], board.pot_7[1][16], '|')
+    print('|', board.pot_12[1][17], board.pot_12[1][18], board.pot_12[1][19], board.pot_12[1][20], '|', '|', board.pot_11[1][17], board.pot_11[1][18], board.pot_11[1][19], board.pot_11[1][20], '|', '|', board.pot_10[1][17], board.pot_10[1][18], board.pot_10[1][19], board.pot_10[1][20], '|', '|', board.pot_9[1][17], board.pot_9[1][18], board.pot_9[1][19], board.pot_9[1][20], '|', '|', board.pot_8[1][17], board.pot_8[1][18], board.pot_8[1][19], board.pot_8[1][20], '|', '|', board.pot_7[1][17], board.pot_7[1][18], board.pot_7[1][19], board.pot_7[1][20], '|')
+    print('|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|')
+    print("  POT 12","      POT 11", "      POT 10", "      POT 9", "      POT 8", "      POT 7")
+    print("\n","\t"*4,f"{player2.name}'s POTS: 7, 8, 9, 10, 11, 12 \nSECOND PLAYER: {player2.name}")
+    print("___________________________________________________________________________")
+    print(f"\nBoard: {player2.section_stones()} stones\nHand: {len(player2.hand)} stones\nCaptured: {len(player2.captured_stones)} stones\nTOTAL: {player2.section_stones()+len(player2.hand)+len(player2.captured_stones)} stones\n")
 
-def board_view(player1, player2):
-    '''
-    visual representation of the game board
-    both players have opposite sections
-    each section has six pots
-    each pot can contain the maximum number of stones - 48
-    displaying the pots and stones in each section
-    '''
-    print("\t\t\t\tSECTION A")
-    print("  POT 1","      POT 2", "      POT 3", "      POT 4", "      POT 5", "      POT 6")
-    print(' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ')
-    print('|', player1.pot_1[1], player1.pot_1[2], player1.pot_1[3], player1.pot_1[4], '|', '|', player1.pot_2[1], player1.pot_2[2], player1.pot_2[3], player1.pot_2[4], '|', '|', player1.pot_3[1], player1.pot_3[2], player1.pot_3[3], player1.pot_3[4], '|', '|',  player1.pot_4[1], player1.pot_4[2], player1.pot_4[3], player1.pot_4[4], '|', '|', player1.pot_5[1], player1.pot_5[2], player1.pot_5[3], player1.pot_5[4], '|', '|', player1.pot_6[1], player1.pot_6[2], player1.pot_6[3], player1.pot_6[4], '|')
-    print('|', player1.pot_1[5], player1.pot_1[6], player1.pot_1[7], player1.pot_1[8], '|', '|', player1.pot_2[5], player1.pot_2[6], player1.pot_2[7], player1.pot_2[8], '|', '|', player1.pot_3[5], player1.pot_3[6], player1.pot_3[7], player1.pot_3[8], '|', '|', player1.pot_4[5], player1.pot_4[6], player1.pot_4[7], player1.pot_4[8], '|', '|',  player1.pot_5[5], player1.pot_5[6], player1.pot_5[7], player1.pot_5[8], '|', '|', player1.pot_6[5], player1.pot_6[6], player1.pot_6[7], player1.pot_6[8], '|')
-    print('|', player1.pot_1[9], player1.pot_1[10], player1.pot_1[11], player1.pot_1[12], '|', '|', player1.pot_2[9], player1.pot_2[10], player1.pot_2[11], player1.pot_2[12], '|', '|', player1.pot_3[9], player1.pot_3[10], player1.pot_3[11], player1.pot_3[12], '|', '|', player1.pot_4[9], player1.pot_4[10], player1.pot_4[11], player1.pot_4[12], '|', '|', player1.pot_5[9], player1.pot_5[10], player1.pot_5[11], player1.pot_5[12], '|', '|', player1.pot_6[9], player1.pot_6[10], player1.pot_6[11], player1.pot_6[12], '|')
-    print('|', player1.pot_1[13], player1.pot_1[14], player1.pot_1[15], player1.pot_1[16], '|', '|', player1.pot_2[13], player1.pot_2[14], player1.pot_2[15], player1.pot_2[16], '|', '|', player1.pot_3[13], player1.pot_3[14], player1.pot_3[15], player1.pot_3[16],'|', '|', player1.pot_4[13], player1.pot_4[14], player1.pot_4[15], player1.pot_4[16], '|', '|', player1.pot_5[13], player1.pot_5[14], player1.pot_5[15], player1.pot_5[16], '|', '|', player1.pot_6[13], player1.pot_6[14], player1.pot_6[15], player1.pot_6[16], '|')
-    print('|', player1.pot_1[17], player1.pot_1[18], player1.pot_1[19], player1.pot_1[20], '|', '|', player1.pot_2[17], player1.pot_2[18], player1.pot_2[19], player1.pot_2[20], '|', '|', player1.pot_3[17], player1.pot_3[18], player1.pot_3[19], player1.pot_3[20], '|', '|', player1.pot_4[17], player1.pot_4[18], player1.pot_4[19], player1.pot_4[20], '|', '|', player1.pot_5[17], player1.pot_5[18], player1.pot_5[19], player1.pot_5[20], '|', '|', player1.pot_6[17], player1.pot_6[18], player1.pot_6[19], player1.pot_6[20], '|')
-    print('|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|')
-    print(' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ')
-    print('|', player2.pot_1[1], player2.pot_1[2], player2.pot_1[3], player2.pot_1[4], '|', '|', player2.pot_2[1], player2.pot_2[2], player2.pot_2[3], player2.pot_2[4], '|', '|', player2.pot_3[1], player2.pot_3[2], player2.pot_3[3], player2.pot_3[4], '|', '|',  player2.pot_4[1], player2.pot_4[2], player2.pot_4[3], player2.pot_4[4], '|', '|', player2.pot_5[1], player2.pot_5[2], player2.pot_5[3], player2.pot_5[4], '|', '|', player2.pot_6[1], player2.pot_6[2], player2.pot_6[3], player2.pot_6[4], '|')
-    print('|', player2.pot_1[5], player2.pot_1[6], player2.pot_1[7], player2.pot_1[8], '|', '|', player2.pot_2[5], player2.pot_2[6], player2.pot_2[7], player2.pot_2[8], '|', '|', player2.pot_3[5], player2.pot_3[6], player2.pot_3[7], player2.pot_3[8], '|', '|', player2.pot_4[5], player2.pot_4[6], player2.pot_4[7], player2.pot_4[8], '|', '|',  player2.pot_5[5], player2.pot_5[6], player2.pot_5[7], player2.pot_5[8], '|', '|', player2.pot_6[5], player2.pot_6[6], player2.pot_6[7], player2.pot_6[8], '|')
-    print('|', player2.pot_1[9], player2.pot_1[10], player2.pot_1[11], player2.pot_1[12], '|', '|', player2.pot_2[9], player2.pot_2[10], player2.pot_2[11], player2.pot_2[12], '|', '|', player2.pot_3[9], player2.pot_3[10], player2.pot_3[11], player2.pot_3[12], '|', '|', player2.pot_4[9], player2.pot_4[10], player2.pot_4[11], player2.pot_4[12], '|', '|', player2.pot_5[9], player2.pot_5[10], player2.pot_5[11], player2.pot_5[12], '|', '|', player2.pot_6[9], player2.pot_6[10], player2.pot_6[11], player2.pot_6[12], '|')
-    print('|', player2.pot_1[13], player2.pot_1[14], player2.pot_1[15], player2.pot_1[16], '|', '|', player2.pot_2[13], player2.pot_2[14], player2.pot_2[15], player2.pot_2[16], '|', '|', player2.pot_3[13], player2.pot_3[14], player2.pot_3[15], player2.pot_3[16],'|', '|', player2.pot_4[13], player2.pot_4[14], player2.pot_4[15], player2.pot_4[16], '|', '|', player2.pot_5[13], player2.pot_5[14], player2.pot_5[15], player2.pot_5[16], '|', '|', player2.pot_6[13], player2.pot_6[14], player2.pot_6[15], player2.pot_6[16], '|')
-    print('|', player2.pot_1[17], player2.pot_1[18], player2.pot_1[19], player2.pot_1[20], '|', '|', player2.pot_2[17], player2.pot_2[18], player2.pot_2[19], player2.pot_2[20], '|', '|', player2.pot_3[17], player2.pot_3[18], player2.pot_3[19], player2.pot_3[20], '|', '|', player2.pot_4[17], player2.pot_4[18], player2.pot_4[19], player2.pot_4[20], '|', '|', player2.pot_5[17], player2.pot_5[18], player2.pot_5[19], player2.pot_5[20], '|', '|', player2.pot_6[17], player2.pot_6[18], player2.pot_6[19], player2.pot_6[20], '|')
-    print('|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|', '|_','_', '_', '_', '_|')
-    print("  POT 1","      POT 2", "      POT 3", "      POT 4", "      POT 5", "      POT 6")
-    print("\t\t\t\tSECTION B")
 
 
 
@@ -307,3 +1336,10 @@ def player_name():
             print("\n\Enter a valid name")
             continue
         return val.upper()
+
+def welc_scrn():
+    print("\n","\t"*4,"*****WELCOME*****")
+    print("\n","\t"*4,"*******TO********")
+    print("\n","\t"*4,"*****OGIDISE*****")
+    print("\n","\t"*4,"****BOARD GAME****")
+    print("\n","\t"*4,"**FEBRUARY, 2021**")
