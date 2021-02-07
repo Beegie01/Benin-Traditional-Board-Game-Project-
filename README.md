@@ -1,12 +1,23 @@
-# My First Independent Python Project - (OGIDISE) A Board Game
+# My First Independent Python Project - 
+# My Simulation of A Benin Traditional Board Game - *OGIDISE*
 
-This is a simulation of a traditional board game in Benin City called 'Ogidise'. It can only be played by two players facing opposite each other. Each player has their own section of the board. Each section comprises 6 smaller pots (holes) and 1 large reserve pot. At the beginning, all the pots (12) are filled with 4 stones each making a total of 48 stones in play
+Here, I simulated a traditional board game that I once played growing up in Benin City, called 'Ogidise'. The game is played between two players (opponents). The board consists of two sides with 6 holes/pots each, making a total of 12 holes/pots. Each pot is meant to accommodate stones, and there is a total of 48 stones in play. Each side is assigned to a player based on a coin flip. 
 
-The first player picks the stones from any of their pots that they want, and holds in their hand. Then, moving in a clockwise direction, they drop one stone at a time from their hand into the following pot across the board, until their hand is empty.
+THE GAME:
 
-CHANGE OF PLAYER TURN: If their last stone falls into an empty pot, then the next player's turn begins. Else, the player picks all the stones in last pot they dropped into and continues dropping one stone in each following pot as they continue moving clockwise.
+PICK: when a player transfers the content of a pot to their hand
 
-CLAIM: If their last stone falls into an opponent's pot containing three stones thereby making it four stones, they own those four stones. And empty that opponent's pot into their reserve, thereby reducing the total number of stones in play by four.
+CYCLE OF DROP: while dropping stones, player drops one stone at a time going from pot 1 to pot 12 and if they still have stones after reaching 12, then they should go back to pot 1 and restart the cycle.
 
-WIN: Generally, the player in possession of a higher number of stones (including the stones in their reserve) wins the game. An indisputable winner emerges when a player succeeds in emptying all the pots of their opponent.
+1. COIN TOSS: to determine first turn and assignment of board side to each player
+
+2 BOARD FILL-UP: At the beginning, each pot (12) have 4 stones, and each has 24 stones on their side
+
+3. FIRST PLAYER TURN: The first player enters a number corresponding to the pot that they want to pick from ranging between 1 and 6 or 7 and 12 depending on their side of the board. Then, player drops stones into the next series of pots one at a time from their hand, moving in a clockwise direction (from 1 to 12). This is done across the board until their hand is empty of stones.
+
+CHANGE OF PLAYER TURN: If the last stone falls into an empty pot, then the current player must stop for the next player's turn to begin. Else (if the last stone was dropped into a non-empty pot), then the current player must pick up all the stones in that last pot and continue dropping one stone at a time into each of the following pot while maintaining the cycle of drop.
+
+CLAIM: If the last stone droppend from hand was into any pot on the opponent's side containing three stones thereby making it four stones, then the player picks up all four stones and transfers them into their reservoir pot thereby reducing the total number of stones in play by four. After each claim, turn switches to next player. 
+
+Generally, the player in possession of a higher number of stones (including the stones in their reserve) wins the game. An undisputable winner emerges when a player succeeds in emptying all the pots of their opponent.
 
