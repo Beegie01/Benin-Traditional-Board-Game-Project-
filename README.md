@@ -1,5 +1,6 @@
-# My First Independent Python Project - 
-# My Simulation of A Benin Traditional Board Game - *OGIDISE*
+AN INDEPENDENT PYTHON PROJECT
+
+My Simulation of A Benin Traditional Board Game - *OGIDISE*
 
 Here, I simulated a traditional board game that I once played growing up in Benin City, called 'Ogidise'. The game is played between two players (opponents). The board consists of two sides with 6 holes/pots each, making a total of 12 holes/pots. Each pot is meant to accommodate stones, and there is a total of 48 stones in play. Each side is assigned to a player based on a coin flip. 
 
@@ -20,4 +21,3 @@ CHANGE OF PLAYER TURN: If the last stone falls into an empty pot, then the curre
 CLAIM: If the last stone droppend from hand was into any pot on the opponent's side containing three stones thereby making it four stones, then the player picks up all four stones and transfers them into their reservoir pot thereby reducing the total number of stones in play by four. After each claim, turn switches to next player. 
 
 Generally, the player in possession of a higher number of stones (including the stones in their reserve) wins the game. An undisputable winner emerges when a player succeeds in emptying all the pots of their opponent.
-
