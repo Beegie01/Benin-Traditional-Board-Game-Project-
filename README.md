@@ -2,7 +2,7 @@ AN INDEPENDENT PYTHON PROJECT
 
 My Simulation of A Traditional Board Game - *OGIDISE*
 
-Here, I simulated a traditional board game that I once played growing up in Benin City, called 'Ogidise'. The game is played between two players (opponents). The board consists of two sides with 6 holes/pots each, making a total of 12 holes/pots. Each pot is meant to accommodate stones, and there is a total of 48 stones in play. Each side is assigned to a player based on a coin flip. 
+Here, I simulated a traditional board game that I once played growing up in Benin City, called 'Ogidise'. The game is a competition between two players (opponents). The board consists of two sides with 6 holes/pots each, making a total of 12 holes/pots. Each pot is meant to accommodate stones, and there is a total of 48 stones in play. Each side is assigned to a player based on a coin flip. 
 
 THE GAME:
 
