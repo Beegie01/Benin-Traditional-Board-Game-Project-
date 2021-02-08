@@ -1,5 +1,10 @@
-import ogidise_module_with_win_check
-from ogidise_module_with_win_check import *
+# importing modules from package
+from GameModules import board_cls, player_cls
+
+#importing class from modules
+from GameModules.board_cls import *
+from GameModules.player_cls import *
+
 
 
 welc_scrn()
