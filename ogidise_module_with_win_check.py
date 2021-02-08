@@ -2285,7 +2285,7 @@ class Player(Board):
 def board_view(board, player1, player2):
     print("\n", "\t"*10, f"\n\t\tFIRST PLAYER: {Fore.LIGHTGREEN_EX} {player1.name}\t\t\t\t{player1.board_side.upper()}: 1, 2, 3, 4, 5, 6 {Fore.RESET}")
     print("\t\t___________________________________________________________________________")
-    print(f"\t\tBoard: {player1.section_stones()} stones\n\t\tHand: {len(player1.hand)} stones\n\t\tCaptured: {len(player1.captured_stones)} stones | Claims: {int(len(player1.captured_stones)/4)})\t\t{player1.captured_stones}\n\t\tTOTAL: {player1.section_stones()+len(player1.hand)+len(player1.captured_stones)} stones\n")
+    print(f"\t\tBoard: {player1.section_stones()} stones\n\t\tHand: {len(player1.hand)} stones\n\t\tCaptured: {len(player1.captured_stones)} stones | Claims: {int(len(player1.captured_stones)/4)}\t\tReserve:  {Fore.LIGHTBLUE_EX}{player1.captured_stones}{Fore.RESET}\n\t\tTOTAL: {player1.section_stones()+len(player1.hand)+len(player1.captured_stones)} stones\n")
     print(Fore.LIGHTGREEN_EX, '\t\t'"  POT 1","      POT 2", "      POT 3", "      POT 4", "      POT 5", "      POT 6", Fore.RESET)
     print(Fore.LIGHTGREEN_EX)
     print('\t\t'' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ', ' _','_', '_', '_', '_ ')
@@ -2309,7 +2309,7 @@ def board_view(board, player1, player2):
     print(Fore.LIGHTBLUE_EX, '\t\t'"  POT 12","      POT 11", "      POT 10", "      POT 9", "      POT 8", "      POT 7", Fore.RESET)
     print("\n", "\t"*10, f"\n\t\tSECOND PLAYER: {Fore.LIGHTBLUE_EX} {player2.name}\t\t\t\t{player2.board_side.upper()}: 7, 8, 9, 10, 11, 12 {Fore.RESET}")
     print('\t\t'"___________________________________________________________________________")
-    print(f"\n\t\tBoard: {player2.section_stones()} stones\n\t\tHand: {len(player2.hand)} stones\n\t\tCaptured: {len(player2.captured_stones)} stones | Claims: {int(len(player2.captured_stones)/4)})\t\t{player2.captured_stones}\n\t\tTOTAL: {player2.section_stones()+len(player2.hand)+len(player2.captured_stones)} stones\n")
+    print(f"\n\t\tBoard: {player2.section_stones()} stones\n\t\tHand: {len(player2.hand)} stones\n\t\tCaptured: {len(player2.captured_stones)} stones | Claims: {int(len(player2.captured_stones)/4)}\t\tReserve:  {Fore.LIGHTGREEN_EX}{player2.captured_stones}{Fore.RESET}\n\t\tTOTAL: {player2.section_stones()+len(player2.hand)+len(player2.captured_stones)} stones\n")
 
 
 
