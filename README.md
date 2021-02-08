@@ -20,4 +20,5 @@ CHANGE OF PLAYER TURN: If the last stone falls into an empty pot, then the curre
 
 CLAIM: If the last stone droppend from hand was into any pot on the opponent's side containing three stones thereby making it four stones, then the player picks up all four stones and transfers them into their reservoir pot thereby reducing the total number of stones in play by four. After each claim, turn switches to next player. 
 
-Generally, the player in possession of a higher number of stones (including the stones in their reserve) wins the game. An undisputable winner emerges when a player succeeds in emptying all the pots of their opponent.
+WINNER:
+Generally, the player in possession of a higher number of stones (including the stones in their reserve) wins the game. An undisputable winner emerges when a player succeeds in CLAIMING more stones than the opponent by the time the total number of stones still in play gets to 16.
