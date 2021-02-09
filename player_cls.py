@@ -43,7 +43,17 @@ class Player(Board):
 
     # METHODS
     def pick_coin_sides(self):
+        '''
+        for player to choose between HEAD and TAIL
+        returns the picked side of coin
 
+        Example:
+
+        player1.pick_coin_sides() -->
+
+        Osagie picks HEAD!
+        returns 'HEAD'
+        '''
         print(f"\n\n{self.name} choose HEAD or TAIL")
         acc_range = ['head', 'h', 'tail', 't']
         pick = None
@@ -68,14 +78,36 @@ class Player(Board):
                 return 'TAIL'
 
     def coin_toss(self):
+        '''
+        computer randomly gives HEAD or TAIL
+        as a result of a coin flip
+        returnS 'HEAD' or 'TAIL'
+
+        Example:
+
+        player1.coin_toss() -->
+
+        'HEAD'
+        '''
+
         coin = ['HEAD', 'TAIL']
         return random.choice(coin)
 
     def game_starter(self, picked_side, player1, player2):
+        '''
+        Displays the result after the toss of the coin
+        Returns the name of player who picked the side of the coin
+
+        Example:
+
+        player1.game_starter(coin_toss_result, player1, player2) -->
+
+        Osagie STARTS!
+        '''
 
         toss_result = self.coin_toss()
 
-        print(f"\n{self.name} FLIPS COIN!\n{toss_result} emerges!")
+        print(f"\n{self.name} FLIPS COIN!\n\n{toss_result} emerges!")
 
         if picked_side == toss_result:
             print(f"{player1.name} STARTS!")
@@ -85,6 +117,10 @@ class Player(Board):
             return player2.name
 
     def assign_sections(self, board, first_player, second_player):
+        '''
+        Assigns board side and pots to players
+
+        '''
         first_player.pot_1 = board.pot_1
         first_player.pot_2 = board.pot_2
         first_player.pot_3 = board.pot_3
@@ -102,8 +138,8 @@ class Player(Board):
 
     def pot_fill(self, pot):
         '''
-        input is pot object
-        fill up empty cell in a pot
+        Input is pot object
+        Fill up empty cell in a pot
         '''
         first_key = self.first_empty_key(pot)
         pot[1][first_key] = 'O'
@@ -119,8 +155,8 @@ class Player(Board):
 
     def first_empty_key(self, pot):
         '''
-        input is a pot_obj
-        returns the first empty cell in a pot
+        Input is a pot object
+        Returns the first empty cell in a pot
         '''
         keys = []
         for k,v in pot[1].items():
@@ -133,7 +169,8 @@ class Player(Board):
 
     def fp_prompt_pot_no(self):
         '''
-        first player selects which of his pots to pick from
+        First player selects which of his pots to pick from
+        Can only select a pot between 1-6 (Side A)
         '''
         print(f"{self.name} TURN:\n\nChoose pot to pick from?")
         acc_range = range(1,7)
@@ -154,8 +191,8 @@ class Player(Board):
 
     def fp_select_pot(self, board):
         '''
-        converts first player's pick (1-6) into their corresponding pot instance
-        outputs the pot_name, pot_object and number
+        Converts first player's pick (1-6) into their corresponding pot instance
+        Outputs the pot_object
         '''
 
         pick = self.fp_prompt_pot_no()
@@ -175,7 +212,8 @@ class Player(Board):
 
     def sp_prompt_pot_no(self):
         '''
-        second player selects which of his pots to pick from
+        Second player selects which of his pots to pick from
+        Can only select between 7-12 (Side B)
         '''
         print(f"{self.name} TURN:\n\nChoose pot to pick from?")
         acc_range = range(7,13)
@@ -196,8 +234,8 @@ class Player(Board):
 
     def sp_select_pot(self, board):
         '''
-        converts second player's pick (7-12) into their corresponding pot instance
-        outputs the pot_name, pot_object and number
+        Converts second player's pick (7-12) into their corresponding pot instance
+        Outputs the pot_object
         '''
 
         pick = self.sp_prompt_pot_no()
@@ -217,7 +255,8 @@ class Player(Board):
 
     def check_if_empty(self, chosen_pot):
         '''
-        check to see if pot is empty
+        Check to see if pot is empty
+        Returns True if pot is empty
         '''
 
         ok_count = self.occupied_keys(chosen_pot)
@@ -228,8 +267,14 @@ class Player(Board):
 
     def occupied_keys(self, pot):
         '''
-        input is a pot_object
-        returns a list of occupied cells in a pot
+        Input is a pot object
+        Returns a list of occupied cells in a pot
+
+        Example:
+
+        player1.occupied_keys(player2.pot_1) -->
+
+        POT_1 contains 10 stones
         '''
         keys = []
         for k,v in pot[1].items():
@@ -243,8 +288,8 @@ class Player(Board):
 
     def section_stones(self):
         '''
-        place all the stones in a player's section in one list (container)
-        counts only stones, ignoring whitespaces
+        Place all the stones in a player's section in one list (container)
+        Counts only stones, ignoring whitespaces
         '''
         container = []
         container.extend(list(self.pot_1[1].values()))
@@ -266,9 +311,15 @@ class Player(Board):
 
     def from_pot_to_hand(self, feeder_pot):
         '''
-        input is board pot object
-        transfers stones from pot to hand
-        and pot becomes empty
+        Input is pot object
+        Transfers stones from pot to hand
+        And pot becomes empty
+
+        Example:
+
+        player1.from_pot_to_hand(player2.pot_8) -->
+
+        Osagie picked from pot_8
         '''
 
         listed = []
@@ -290,13 +341,13 @@ class Player(Board):
 
     def reset_pot(self, pot):
         '''
-        resets a pot's content
+        Resets a pot's content
         '''
         pot[1].update(Board.pot)
 
     def drop_stone(self):
         '''
-        player drops from hand one stone at a time
+        Player drops from hand one stone at a time
         '''
         try:
             return self.hand.pop(0)
