@@ -1,5 +1,3 @@
-
-
 class Board:
 
     pot = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '}
@@ -73,15 +71,6 @@ class Board:
                 stones += char
         print(f"There are {len(stones)} stones in {pot[0]}")
         return len(stones)
-
-
-    def calc_board_stones(self, current_player, next_player):
-        '''
-        inputs are current and next player instances
-        records the total number
-        '''
-        board_stones = current_player.section_stones() + len(current_player.hand) + next_player.section_stones() + len(next_player.hand)
-        return board_stones
 
     def distribute_stones(self, current_player):
         '''
@@ -1905,28 +1894,30 @@ def board_view(board, player1, player2):
     print(f"\n\t\tBoard: {player2.section_stones()} stones\n\t\tHand: {len(player2.hand)} stones\n\t\tCaptured: {len(player2.captured_stones)} stones | Claims: {int(len(player2.captured_stones)/4)}\t\tReserve:  {Fore.LIGHTGREEN_EX}{player2.captured_stones}{Fore.RESET}\n\t\tTOTAL: {player2.section_stones()+len(player2.hand)+len(player2.captured_stones)} stones\n")
 
     # check for a winner
-    total_stones_inplay = board.calc_board_stones(player1, player2)
+    total_stones_inplay = player1.section_stones() + player2.section_stones() + len(player1.hand) + len(player2.hand)
 
-    cp_total_stones = len(player1.captured_stones) + player1.section_stones() + len(player1.hand)
-    np_total_stones = len(player2.captured_stones) + player2.section_stones() + len(player1.hand)
+    p1_total_stones = len(player1.captured_stones) + player1.section_stones() + len(player1.hand)
+    p2_total_stones = len(player2.captured_stones) + player2.section_stones() + len(player2.hand)
 
-    # when there's a DRAW
-    if (0 < total_stones_inplay < 16) and (cp_total_stones == np_total_stones):
-        print("\n\nTHIS IS A DRAW!!!\nNO WINNER HAS EMERGED!")
-        player1.play_on()
-        return player1.exit_play()
 
-    # when player1 wins
-    elif (0 < total_stones_inplay < 16) and (cp_total_stones > np_total_stones):
-        print("\n"*3,f"{player1.name} WINS!")
-        player1.play_on()
-        return player1.exit_play()
+    if (total_stones_inplay > 0 and total_stones_inplay < 17):
+        # when there's a DRAW
+        if (p1_total_stones == p2_total_stones):
+            print(Fore.RED,"\n\n\nSTALEMATE!!!\n\nTHERE IS NO WINNER!", Fore.RESET)
+            player1.play_on()
+            return player1.exit_play()
 
-    # when the other player wins
-    elif (0 < total_stones_inplay < 16) and (cp_total_stones > np_total_stones):
-        print("\n"*3,f"{player2.name} WINS!")
-        player1.play_on()
-        return player1.exit_play()
+        # when player1 wins
+        elif (p1_total_stones > p2_total_stones):
+            print(Fore.LIGHTGREEN_EX, "\n"*3,f"{player1.name} WINS!", Fore.RESET)
+            player1.play_on()
+            return player1.exit_play()
+
+        # when the other player wins
+        elif (p1_total_stones < p2_total_stones):
+            print(Fore.LIGHTBLUE_EX, "\n"*3,f"{player2.name} WINS!", Fore.RESET)
+            player1.play_on()
+            return player1.exit_play()
 
 
 

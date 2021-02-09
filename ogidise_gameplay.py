@@ -53,7 +53,7 @@ board_view(board, fp, sp)
 ump.play_on()
 
 
-print("\n","\t"*2, "FILLING GAME BOARD WITH FOUR STONES IN EACH POT\n")
+print("\n""\t"*2, "FILLING GAME BOARD WITH FOUR STONES IN EACH POT\n")
 
 ump.play_on()
 # all 12 pots are filled with stones
@@ -71,25 +71,25 @@ ump.pot_fill(sp.pot_4)
 ump.pot_fill(sp.pot_5)
 ump.pot_fill(sp.pot_6)
 
-game_on = True
-while game_on:
+GAME_ON = True
+while GAME_ON:
 
     board_view(board, fp, sp)
 
     ump.play_on()
 
     # first player's turn
-    first_turn = True
-    while first_turn:
+    FIRST_TURN = True
+    while FIRST_TURN:
 
         # first player selects where to begin picking from
         pot_obj = fp.fp_select_pot(board)
 
         # check if player chose to pick from an empty pot
-        empty = fp.check_if_empty(pot_obj)
+        EMPTY = fp.check_if_empty(pot_obj)
 
         # another chance for player to pick from a non-empty pot
-        if empty:
+        if EMPTY:
             continue
 
         # player carries picked stones in their hand
@@ -117,7 +117,7 @@ while game_on:
 
         # returns true if turn continues
         # returns false if claim occurs or turn stops
-        continue_play = board.enforce_ccs(result, fp)
+        CONTINUE_PLAY = board.enforce_ccs(result, fp)
 
         ump.play_on()
 
@@ -125,27 +125,27 @@ while game_on:
 
         ump.play_on()
 
-        if continue_play:
+        if CONTINUE_PLAY:
             # returns false when player eventually hits an empty pot
-            first_turn = board.continue_playing(fp, fp, sp)
+            FIRST_TURN = board.continue_playing(fp, fp, sp)
 
-        first_turn = False
+        FIRST_TURN = False
 
     board_view(board, fp, sp)
 
     # second player's turn
-    second_turn = True
-    while second_turn:
+    SECOND_TURN = True
+    while SECOND_TURN:
 
         # first player selects where to begin picking from
         # first player selects where to begin picking from
         pot_obj = sp.sp_select_pot(board)
 
         # check if player chose to pick from an empty pot
-        empty = sp.check_if_empty(pot_obj)
+        EMPTY = sp.check_if_empty(pot_obj)
 
         # another chance for player to pick from a non-empty pot
-        if empty:
+        if EMPTY:
             continue
 
         # player carries picked stones in their hand
@@ -173,11 +173,11 @@ while game_on:
 
         # returns true if turn continues
         # returns false if claim occurs or turn stops
-        continue_play = board.enforce_ccs(result, sp)
+        CONTINUE_PLAY = board.enforce_ccs(result, sp)
 
-        if continue_play:
+        if CONTINUE_PLAY:
 
             # returns false when player eventually hits an empty pot
-            second_turn = board.continue_playing(sp, fp, sp)
+            SECOND_TURN = board.continue_playing(sp, fp, sp)
 
-        second_turn = False
+        SECOND_TURN = False
