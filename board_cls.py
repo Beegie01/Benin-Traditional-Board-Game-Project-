@@ -1,9 +1,10 @@
 class Board:
-
+    
+    # spare pot_cells for resetting each pot after each player pick
     pot = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '}
 
     def __init__(self):
-        # pos [0: name, 1: dict, 2: number, board_side]
+        # positions [0: pot_name, 1: pot_cells, 2: pot_number, 3: board_side]
         self.pot_1 = ['pot_1',
                       {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '},
                       1,
@@ -56,8 +57,14 @@ class Board:
 
     def pot_stones(self, pot):
         '''
-        input is pot obj
+        input is pot object
         to get the number of stones in a pot
+        
+        Example:
+        
+        board1.pot_stones(player1.pot_1) --> 
+        
+        "There are 4 stones in pot_1"
         '''
 
         listed = []
@@ -78,6 +85,14 @@ class Board:
         use the pot name from which the current player last picked
         to determine movement/direction of stone spread across game board
         assigns new value to player's last recipient pot attribute
+        
+        Example:
+        
+        board1.distribute_stones(player1) --> 
+        
+        Osagie picked from: pot_1
+        Move Steps: [pot_2, pot_3, pot_4, pot_5]
+        Next Stop: pot_5
         '''
         steps = len(current_player.hand)
 
@@ -1035,6 +1050,20 @@ class Board:
         '''
         input are the current and next players' instances
         Check for CLAIM, CONTINUE, or TURN SWITCH
+        
+        Example:
+        board.css_checker(player1, player2) -->
+        
+        # in case of claim
+        CLAIM!!
+        osagie CLAIMS pot_5
+
+        # in case of turn switch
+        osagie STOP!
+        elliot START YOUR TURN!
+
+        # in case of continue
+        osagie's TURN CONTINUES
         '''
 
 
@@ -1269,6 +1298,19 @@ class Board:
     def enforce_ccs(self, ccs_result, current_player):
         '''
         input is the result from ccs_checker(), current and next player objects
+        
+        Example:
+        board1.enforce_ccs(result, player1) -->
+        
+        # if result == 'claim'
+        4 stones are transferred from the pot into player's reserve
+        then return False
+        
+        # if result == 'switch_turns'
+        return False
+        
+        # if result == 'continue'
+        return True
         '''
 
         # CLAIM
@@ -1422,6 +1464,16 @@ class Board:
         inputs are first, second, and current player objects
         to automatically run the play
         until the last stone of player hits an empty pot
+        
+        Example:
+
+        board1.continue_playing(player1, player1, player2) -->
+        
+        # inplace operations
+        transfer stones from pot to hand
+        stones in hand get distributed automatically 
+        check the last receiving pot for continue, claim, or turn_switch
+        claim stones, continue playing or switch to next player based on the above result
         '''
 
         while True:
@@ -1865,6 +1917,22 @@ init()
 
 # FUNCTIONS
 def board_view(board, player1, player2):
+    '''
+    Displays both player's stats, current state of the board 
+    Runs a check for game WINNER or STALEMATE
+
+    Example:
+
+    board_view(board1, player1, player2) -->
+
+    # STALEMATE (in red colors)
+    STALEMATE!
+    THERE IS NO WINNER!
+
+    # WINNER EMERGES (in player's colors)
+    osagie WINS!
+    '''
+    
     print("\n", "\t"*10, f"\n\t\tFIRST PLAYER: {Fore.LIGHTGREEN_EX} {player1.name}\t\t\t\t{player1.board_side.upper()}: 1, 2, 3, 4, 5, 6 {Fore.RESET}")
     print("\t\t___________________________________________________________________________")
     print(f"\t\tBoard: {player1.section_stones()} stones\n\t\tHand: {len(player1.hand)} stones\n\t\tCaptured: {len(player1.captured_stones)} stones | Claims: {int(len(player1.captured_stones)/4)}\t\tReserve:  {Fore.LIGHTBLUE_EX}{player1.captured_stones}{Fore.RESET}\n\t\tTOTAL: {player1.section_stones()+len(player1.hand)+len(player1.captured_stones)} stones\n")
@@ -1922,6 +1990,16 @@ def board_view(board, player1, player2):
 
 
 def player_name():
+    '''
+    ensures that input is string
+    and returns string in upper case
+    
+    Example:
+    
+    player_name() -->
+    
+    OSAGIE
+    '''
     while True:
         val = input("\n\t\tPlayer Name:   \n\t\t")
         if val.isdigit():
