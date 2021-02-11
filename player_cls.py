@@ -2,7 +2,6 @@
 import random
 
 # importing from modules
-from . import board_cls
 from .board_cls import Board
 
 class Player(Board):
@@ -153,13 +152,13 @@ class Player(Board):
         fourth_key = self.first_empty_key(pot)
         pot[1][fourth_key] = 'O'
 
-    def first_empty_key(self, pot):
+    def first_empty_key(self, pot_obj):
         '''
         Input is a pot object
         Returns the first empty cell in a pot
         '''
         keys = []
-        for k,v in pot[1].items():
+        for k,v in pot_obj[1].items():
             if v == ' ':
                 keys.append(k)
             else:
@@ -172,7 +171,7 @@ class Player(Board):
         First player selects which of his pots to pick from
         Can only select a pot between 1-6 (Side A)
         '''
-        print(f"{self.name} TURN:\n\nChoose pot to pick from?")
+        print(f"{self.name}'s TURN:\n\nChoose pot to pick from?")
         acc_range = range(1,7)
         pick = -1
 
@@ -215,7 +214,7 @@ class Player(Board):
         Second player selects which of his pots to pick from
         Can only select between 7-12 (Side B)
         '''
-        print(f"{self.name} TURN:\n\nChoose pot to pick from?")
+        print(f"{self.name}'s TURN:\n\nChoose pot to pick from?")
         acc_range = range(7,13)
         pick = -1
 
@@ -336,7 +335,7 @@ class Player(Board):
         self.hand += stones
         self.reset_pot(feeder_pot)
         self.last_picked_pot = feeder_pot[0]
-        return print(f"\n{self.name} picked from {feeder_pot[0]}")
+        print(f"\n{self.name} picked from {feeder_pot[0]}")
 
 
     def reset_pot(self, pot):
