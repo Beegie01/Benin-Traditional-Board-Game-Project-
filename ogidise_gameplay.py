@@ -1,6 +1,3 @@
-# importing modules from package
-from GameModules import board_cls, player_cls
-
 #importing class from modules
 from GameModules.board_cls import *
 from GameModules.player_cls import *
@@ -113,8 +110,6 @@ while GAME_ON:
         # check the last recipient pot for CLAIM, CONTINUE or STOP
         result = board.ccs_checker(fp, sp)
 
-        ump.play_on()
-
         # returns true if turn continues
         # returns false if claim occurs or turn stops
         CONTINUE_PLAY = board.enforce_ccs(result, fp)
@@ -168,8 +163,6 @@ while GAME_ON:
 
         # check the last recipient pot for CLAIM, CONTINUE or STOP
         result = board.ccs_checker(sp, fp)
-
-        ump.play_on()
 
         # returns true if turn continues
         # returns false if claim occurs or turn stops
