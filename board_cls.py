@@ -1,5 +1,5 @@
 class Board:
-    
+
     # spare pot_cells for resetting each pot after each player pick
     pot = {1: ' ', 2: ' ', 3: ' ', 4: ' ', 5: ' ', 6: ' ', 7: ' ', 8: ' ', 9: ' ', 10: ' ', 11: ' ', 12: ' ', 13: ' ', 14: ' ', 15: ' ', 16: ' ', 17: ' ', 18: ' ', 19: ' ', 20: ' ', 21: ' ', 22: ' ', 23: ' ', 24: ' ', 25: ' ', 26: ' ', 27: ' ', 28: ' ', 29: ' ', 30: ' '}
 
@@ -59,11 +59,10 @@ class Board:
         '''
         input is pot object
         to get the number of stones in a pot
-        
+
         Example:
-        
-        board1.pot_stones(player1.pot_1) --> 
-        
+        board1.pot_stones(player1.pot_1) -->
+
         "There are 4 stones in pot_1"
         '''
 
@@ -76,8 +75,15 @@ class Board:
                 continue
             else:
                 stones += char
-        print(f"There are {len(stones)} stones in {pot[0]}")
+
+        if len(stones) == 1:
+            print(f"\nOnly {len(stones)} stone in {pot[0]}")
+        elif len(stones) < 1:
+            print(f"\n{pot[0]} is empty!")
+        else:
+            print(f"There are {len(stones)} stones in {pot[0]}")
         return len(stones)
+
 
     def distribute_stones(self, current_player):
         '''
@@ -85,11 +91,11 @@ class Board:
         use the pot name from which the current player last picked
         to determine movement/direction of stone spread across game board
         assigns new value to player's last recipient pot attribute
-        
+
         Example:
-        
-        board1.distribute_stones(player1) --> 
-        
+
+        board1.distribute_stones(player1) -->
+
         Osagie picked from: pot_1
         Move Steps: [pot_2, pot_3, pot_4, pot_5]
         Next Stop: pot_5
@@ -107,7 +113,7 @@ class Board:
             # shortlisting of the pots into which the player can fill up
             # based on the number of stones the player has
             use_name = pot_name_seq[:steps]
-            print(f"\n\n{current_player.name} picked from: {current_player.last_picked_pot}\nMove Steps: {use_name}\nNext Stop: {use_name[-1]}")
+            print(f"\n\n{current_player.name} picked {len(use_name)} stones from: {current_player.last_picked_pot}\nMove Steps: {', '.join(use_name)}\nNext Stop: {use_name[-1]}")
 
             # storage of last pot name from shortlisted pot names player's last recipient pot
             current_player.last_recipient_pot = use_name[-1]
@@ -187,7 +193,7 @@ class Board:
             # shortlisting of the pots into which the player can fill up
             # based on the number of stones the player has
             use_name = pot_name_seq[:steps]
-            print(f"\n\n{current_player.name} picked from: {current_player.last_picked_pot}\nMove Steps: {use_name}\nNext Stop: {use_name[-1]}")
+            print(f"\n\n{current_player.name} picked {len(use_name)} stones from: {current_player.last_picked_pot}\nMove Steps: {', '.join(use_name)}\nNext Stop: {use_name[-1]}")
 
             # storage of last pot name from shortlisted pot names player's last recipient pot
             current_player.last_recipient_pot = use_name[-1]
@@ -267,7 +273,7 @@ class Board:
             # shortlisting of the pots into which the player can fill up
             # based on the number of stones the player has
             use_name = pot_name_seq[:steps]
-            print(f"\n\n{current_player.name} picked from: {current_player.last_picked_pot}\nMove Steps: {use_name}\nNext Stop: {use_name[-1]}")
+            print(f"\n\n{current_player.name} picked {len(use_name)} stones from: {current_player.last_picked_pot}\nMove Steps: {', '.join(use_name)}\nNext Stop: {use_name[-1]}")
 
             # storage of last pot name from shortlisted pot names player's last recipient pot
             current_player.last_recipient_pot = use_name[-1]
@@ -346,7 +352,7 @@ class Board:
             # shortlisting of the pots into which the player can fill up
             # based on the number of stones the player has
             use_name = pot_name_seq[:steps]
-            print(f"\n\n{current_player.name} picked from: {current_player.last_picked_pot}\nMove Steps: {use_name}\nNext Stop: {use_name[-1]}")
+            print(f"\n\n{current_player.name} picked {len(use_name)} stones from: {current_player.last_picked_pot}\nMove Steps: {', '.join(use_name)}\nNext Stop: {use_name[-1]}")
 
             # storage of last pot name from shortlisted pot names player's last recipient pot
             current_player.last_recipient_pot = use_name[-1]
@@ -426,7 +432,7 @@ class Board:
             # shortlisting of the pots into which the player can fill up
             # based on the number of stones the player has
             use_name = pot_name_seq[:steps]
-            print(f"\n\n{current_player.name} picked from: {current_player.last_picked_pot}\nMove Steps: {use_name}\nNext Stop: {use_name[-1]}")
+            print(f"\n\n{current_player.name} picked {len(use_name)} stones from: {current_player.last_picked_pot}\nMove Steps: {', '.join(use_name)}\nNext Stop: {use_name[-1]}")
 
             # storage of last pot name from shortlisted pot names player's last recipient pot
             current_player.last_recipient_pot = use_name[-1]
@@ -505,7 +511,7 @@ class Board:
             # shortlisting of the pots into which the player can fill up
             # based on the number of stones the player has
             use_name = pot_name_seq[:steps]
-            print(f"\n\n{current_player.name} picked from: {current_player.last_picked_pot}\nMove Steps: {use_name}\nNext Stop: {use_name[-1]}")
+            print(f"\n\n{current_player.name} picked {len(use_name)} stones from: {current_player.last_picked_pot}\nMove Steps: {', '.join(use_name)}\nNext Stop: {use_name[-1]}")
 
             # storage of last pot name from shortlisted pot names player's last recipient pot
             current_player.last_recipient_pot = use_name[-1]
@@ -584,7 +590,7 @@ class Board:
             # shortlisting of the pots into which the player can fill up
             # based on the number of stones the player has
             use_name = pot_name_seq[:steps]
-            print(f"\n\n{current_player.name} picked from: {current_player.last_picked_pot}\nMove Steps: {use_name}\nNext Stop: {use_name[-1]}")
+            print(f"\n\n{current_player.name} picked {len(use_name)} stones from: {current_player.last_picked_pot}\nMove Steps: {', '.join(use_name)}\nNext Stop: {use_name[-1]}")
 
             # storage of last pot name from shortlisted pot names player's last recipient pot
             current_player.last_recipient_pot = use_name[-1]
@@ -663,7 +669,7 @@ class Board:
             # shortlisting of the pots into which the player can fill up
             # based on the number of stones the player has
             use_name = pot_name_seq[:steps]
-            print(f"\n\n{current_player.name} picked from: {current_player.last_picked_pot}\nMove Steps: {use_name}\nNext Stop: {use_name[-1]}")
+            print(f"\n\n{current_player.name} picked {len(use_name)} stones from: {current_player.last_picked_pot}\nMove Steps: {', '.join(use_name)}\nNext Stop: {use_name[-1]}")
 
             # storage of last pot name from shortlisted pot names player's last recipient pot
             current_player.last_recipient_pot = use_name[-1]
@@ -742,7 +748,7 @@ class Board:
             # shortlisting of the pots into which the player can fill up
             # based on the number of stones the player has
             use_name = pot_name_seq[:steps]
-            print(f"\n\n{current_player.name} picked from: {current_player.last_picked_pot}\nMove Steps: {use_name}\nNext Stop: {use_name[-1]}")
+            print(f"\n\n{current_player.name} picked {len(use_name)} stones from: {current_player.last_picked_pot}\nMove Steps: {', '.join(use_name)}\nNext Stop: {use_name[-1]}")
 
             # storage of last pot name from shortlisted pot names player's last recipient pot
             current_player.last_recipient_pot = use_name[-1]
@@ -821,7 +827,7 @@ class Board:
             # shortlisting of the pots into which the player can fill up
             # based on the number of stones the player has
             use_name = pot_name_seq[:steps]
-            print(f"\n\n{current_player.name} picked from: {current_player.last_picked_pot}\nMove Steps: {use_name}\nNext Stop: {use_name[-1]}")
+            print(f"\n\n{current_player.name} picked {len(use_name)} stones from: {current_player.last_picked_pot}\nMove Steps: {', '.join(use_name)}\nNext Stop: {use_name[-1]}")
 
             # storage of last pot name from shortlisted pot names player's last recipient pot
             current_player.last_recipient_pot = use_name[-1]
@@ -900,7 +906,7 @@ class Board:
             # shortlisting of the pots into which the player can fill up
             # based on the number of stones the player has
             use_name = pot_name_seq[:steps]
-            print(f"\n\n{current_player.name} picked from: {current_player.last_picked_pot}\nMove Steps: {use_name}\nNext Stop: {use_name[-1]}")
+            print(f"\n\n{current_player.name} picked {len(use_name)} stones from: {current_player.last_picked_pot}\nMove Steps: {', '.join(use_name)}\nNext Stop: {use_name[-1]}")
 
             # storage of last pot name from shortlisted pot names player's last recipient pot
             current_player.last_recipient_pot = use_name[-1]
@@ -979,7 +985,7 @@ class Board:
             # shortlisting of the pots into which the player can fill up
             # based on the number of stones the player has
             use_name = pot_name_seq[:steps]
-            print(f"\n\n{current_player.name} picked from: {current_player.last_picked_pot}\nMove Steps: {use_name}\nNext Stop: {use_name[-1]}")
+            print(f"\n\n{current_player.name} picked {len(use_name)} stones from: {current_player.last_picked_pot}\nMove Steps: {', '.join(use_name)}\nNext Stop: {use_name[-1]}")
 
             # storage of last pot name from shortlisted pot names player's last recipient pot
             current_player.last_recipient_pot = use_name[-1]
@@ -1050,10 +1056,10 @@ class Board:
         '''
         input are the current and next players' instances
         Check for CLAIM, CONTINUE, or TURN SWITCH
-        
+
         Example:
         board.css_checker(player1, player2) -->
-        
+
         # in case of claim
         CLAIM!!
         osagie CLAIMS pot_5
@@ -1073,17 +1079,17 @@ class Board:
 
             # check for CLAIM
             if (current_player.board_side != self.pot_1[3]) and (stone_count == 4):
-                print("\n"*2,f"CLAIM!!\n{current_player.name} lays claim on pot {current_player.last_recipient_pot}")
+                print("\n"*2,f"CLAIM!!\n\n{current_player.name} CLAIMS {current_player.last_recipient_pot}")
                 return "claim"
 
             # check for TURN SWITCH
             elif stone_count < 2:
-                print("\n",f"{current_player.name} STOP!\n\n{next_player.name} START YOUR TURN!")
+                print("\n",f"{current_player.name} STOP!!")
                 return 'switch_turns'
 
             # check for CONTINUE
             else:
-                print("\n", f"{current_player.name} TURN CONTINUES!!")
+                print("\n", f"{current_player.name}'s TURN CONTINUES!!")
                 return "continue"
 
         # for pot 2
@@ -1092,17 +1098,17 @@ class Board:
 
             # check for CLAIM
             if (current_player.board_side != self.pot_2[3]) and (stone_count == 4):
-                print("\n"*2,f"CLAIM!!\n{current_player.name} lays claim on pot {current_player.last_recipient_pot}")
+                print("\n"*2,f"CLAIM!!\n{current_player.name} CLAIMS {current_player.last_recipient_pot}")
                 return "claim"
 
             # check for TURN SWITCH
             elif stone_count < 2:
-                print("\n",f"{current_player.name} STOP!\n\n{next_player.name} START YOUR TURN!")
+                print("\n",f"{current_player.name} STOP!!")
                 return 'switch_turns'
 
             # check for CONTINUE
             else:
-                print("\n", f"{current_player.name} TURN CONTINUES!!")
+                print("\n", f"{current_player.name}'s TURN CONTINUES!!")
                 return "continue"
 
         # for pot 3
@@ -1111,17 +1117,17 @@ class Board:
 
             # check for CLAIM
             if (current_player.board_side != self.pot_3[3]) and (stone_count == 4):
-                print("\n"*2,f"CLAIM!!\n{current_player.name} lays claim on pot {current_player.last_recipient_pot}")
+                print("\n"*2,f"CLAIM!!\n{current_player.name} CLAIMS {current_player.last_recipient_pot}")
                 return "claim"
 
             # check for TURN SWITCH
             elif stone_count < 2:
-                print("\n",f"{current_player.name} STOP!\n\n{next_player.name} START YOUR TURN!")
+                print("\n",f"{current_player.name} STOP!!")
                 return 'switch_turns'
 
             # check for CONTINUE
             else:
-                print("\n", f"{current_player.name} TURN CONTINUES!!")
+                print("\n", f"{current_player.name}'s TURN CONTINUES!!")
                 return "continue"
 
         # for pot 4
@@ -1130,17 +1136,17 @@ class Board:
 
             # check for CLAIM
             if (current_player.board_side != self.pot_4[3]) and (stone_count == 4):
-                print("\n"*2,f"CLAIM!!\n{current_player.name} lays claim on pot {current_player.last_recipient_pot}")
+                print("\n"*2,f"CLAIM!!\n{current_player.name} CLAIMS {current_player.last_recipient_pot}")
                 return "claim"
 
             # check for TURN SWITCH
             elif stone_count < 2:
-                print("\n",f"{current_player.name} STOP!\n\n{next_player.name} START YOUR TURN!")
+                print("\n",f"{current_player.name} STOP!!")
                 return 'switch_turns'
 
             # check for CONTINUE
             else:
-                print("\n", f"{current_player.name} TURN CONTINUES!!")
+                print("\n", f"{current_player.name}'s TURN CONTINUES!!")
                 return "continue"
 
         # for pot 5
@@ -1149,17 +1155,17 @@ class Board:
 
             # check for CLAIM
             if (current_player.board_side != self.pot_5[3]) and (stone_count == 4):
-                print("\n"*2,f"CLAIM!!\n{current_player.name} lays claim on pot {current_player.last_recipient_pot}")
+                print("\n"*2,f"CLAIM!!\n{current_player.name} CLAIMS {current_player.last_recipient_pot}")
                 return "claim"
 
             # check for TURN SWITCH
             elif stone_count < 2:
-                print("\n",f"{current_player.name} STOP!\n\n{next_player.name} START YOUR TURN!")
+                print("\n",f"{current_player.name} STOP!!")
                 return 'switch_turns'
 
             # check for CONTINUE
             else:
-                print("\n", f"{current_player.name} TURN CONTINUES!!")
+                print("\n", f"{current_player.name}'s TURN CONTINUES!!")
                 return "continue"
 
         # for pot 6
@@ -1168,17 +1174,17 @@ class Board:
 
             # check for CLAIM
             if (current_player.board_side != self.pot_6[3]) and (stone_count == 4):
-                print("\n"*2,f"CLAIM!!\n{current_player.name} lays claim on pot {current_player.last_recipient_pot}")
+                print("\n"*2,f"CLAIM!!\n{current_player.name} CLAIMS {current_player.last_recipient_pot}")
                 return "claim"
 
             # check for TURN SWITCH
             elif stone_count < 2:
-                print("\n",f"{current_player.name} STOP!\n\n{next_player.name} START YOUR TURN!")
+                print("\n",f"{current_player.name} STOP!!")
                 return 'switch_turns'
 
             # check for CONTINUE
             else:
-                print("\n", f"{current_player.name} TURN CONTINUES!!")
+                print("\n", f"{current_player.name}'s TURN CONTINUES!!")
                 return "continue"
 
         # for pot 7
@@ -1187,17 +1193,17 @@ class Board:
 
             # check for CLAIM
             if (current_player.board_side != self.pot_7[3]) and (stone_count == 4):
-                print("\n"*2,f"CLAIM!!\n{current_player.name} lays claim on pot {current_player.last_recipient_pot}")
+                print("\n"*2,f"CLAIM!!\n{current_player.name} CLAIMS {current_player.last_recipient_pot}")
                 return "claim"
 
             # check for TURN SWITCH
             elif stone_count < 2:
-                print("\n",f"{current_player.name} STOP!\n\n{next_player.name} START YOUR TURN!")
+                print("\n",f"{current_player.name} STOP!!")
                 return 'switch_turns'
 
             # check for CONTINUE
             else:
-                print("\n", f"{current_player.name} TURN CONTINUES!!")
+                print("\n", f"{current_player.name}'s TURN CONTINUES!!")
                 return "continue"
 
         # for pot 8
@@ -1206,17 +1212,17 @@ class Board:
 
             # check for CLAIM
             if (current_player.board_side != self.pot_8[3]) and (stone_count == 4):
-                print("\n"*2,f"CLAIM!!\n{current_player.name} lays claim on pot {current_player.last_recipient_pot}")
+                print("\n"*2,f"CLAIM!!\n{current_player.name} CLAIMS {current_player.last_recipient_pot}")
                 return "claim"
 
             # check for TURN SWITCH
             elif stone_count < 2:
-                print("\n",f"{current_player.name} STOP!\n\n{next_player.name} START YOUR TURN!")
+                print("\n",f"{current_player.name} STOP!!")
                 return 'switch_turns'
 
             # check for CONTINUE
             else:
-                print("\n", f"{current_player.name} TURN CONTINUES!!")
+                print("\n", f"{current_player.name}'s TURN CONTINUES!!")
                 return "continue"
 
         # for pot 9
@@ -1225,17 +1231,17 @@ class Board:
 
             # check for CLAIM
             if (current_player.board_side != self.pot_9[3]) and (stone_count == 4):
-                print("\n"*2,f"CLAIM!!\n{current_player.name} lays claim on pot {current_player.last_recipient_pot}")
+                print("\n"*2,f"CLAIM!!\n{current_player.name} CLAIMS {current_player.last_recipient_pot}")
                 return "claim"
 
             # check for TURN SWITCH
             elif stone_count < 2:
-                print("\n",f"{current_player.name} STOP!\n\n{next_player.name} START YOUR TURN!")
+                print("\n",f"{current_player.name} STOP!!")
                 return 'switch_turns'
 
             # check for CONTINUE
             else:
-                print("\n", f"{current_player.name} TURN CONTINUES!!")
+                print("\n", f"{current_player.name}'s TURN CONTINUES!!")
                 return "continue"
 
         # for pot 10
@@ -1244,17 +1250,17 @@ class Board:
 
             # check for CLAIM
             if (current_player.board_side != self.pot_10[3]) and (stone_count == 4):
-                print("\n"*2,f"CLAIM!!\n{current_player.name} lays claim on pot {current_player.last_recipient_pot}")
+                print("\n"*2,f"CLAIM!!\n{current_player.name} CLAIMS {current_player.last_recipient_pot}")
                 return "claim"
 
             # check for TURN SWITCH
             elif stone_count < 2:
-                print("\n",f"{current_player.name} STOP!\n\n{next_player.name} START YOUR TURN!")
+                print("\n",f"{current_player.name} STOP!!")
                 return 'switch_turns'
 
             # check for CONTINUE
             else:
-                print("\n", f"{current_player.name} TURN CONTINUES!!")
+                print("\n", f"{current_player.name}'s TURN CONTINUES!!")
                 return "continue"
 
         # for pot 11
@@ -1263,17 +1269,17 @@ class Board:
 
             # check for CLAIM
             if (current_player.board_side != self.pot_11[3]) and (stone_count == 4):
-                print("\n"*2,f"CLAIM!!\n{current_player.name} lays claim on pot {current_player.last_recipient_pot}")
+                print("\n"*2,f"CLAIM!!\n{current_player.name} CLAIMS {current_player.last_recipient_pot}")
                 return "claim"
 
             # check for TURN SWITCH
             elif stone_count < 2:
-                print("\n",f"{current_player.name} STOP!\n\n{next_player.name} START YOUR TURN!")
+                print("\n",f"{current_player.name} STOP!!")
                 return 'switch_turns'
 
             # check for CONTINUE
             else:
-                print("\n", f"{current_player.name} TURN CONTINUES!!")
+                print("\n", f"{current_player.name}'s TURN CONTINUES!!")
                 return "continue"
 
         # for pot 12
@@ -1282,33 +1288,34 @@ class Board:
 
             # check for CLAIM
             if (current_player.board_side != self.pot_12[3]) and (stone_count == 4):
-                print("\n"*2,f"CLAIM!!\n{current_player.name} lays claim on pot {current_player.last_recipient_pot}")
+                print("\n"*2,f"CLAIM!!\n{current_player.name} CLAIMS {current_player.last_recipient_pot}")
                 return "claim"
 
             # check for TURN SWITCH
             elif stone_count < 2:
-                print("\n",f"{current_player.name} STOP!\n\n{next_player.name} START YOUR TURN!")
+                print("\n",f"{current_player.name} STOP!!")
                 return 'switch_turns'
 
             # check for CONTINUE
             else:
-                print("\n", f"{current_player.name} TURN CONTINUES!!")
+                print("\n", f"{current_player.name}'s TURN CONTINUES!!")
                 return "continue"
 
     def enforce_ccs(self, ccs_result, current_player):
         '''
         input is the result from ccs_checker(), current and next player objects
-        
+
         Example:
+
         board1.enforce_ccs(result, player1) -->
-        
+
         # if result == 'claim'
         4 stones are transferred from the pot into player's reserve
         then return False
-        
+
         # if result == 'switch_turns'
         return False
-        
+
         # if result == 'continue'
         return True
         '''
@@ -1464,14 +1471,14 @@ class Board:
         inputs are first, second, and current player objects
         to automatically run the play
         until the last stone of player hits an empty pot
-        
+
         Example:
 
         board1.continue_playing(player1, player1, player2) -->
-        
-        # inplace operations
+
+        # Inplace operations
         transfer stones from pot to hand
-        stones in hand get distributed automatically 
+        stones in hand get distributed automatically
         check the last receiving pot for continue, claim, or turn_switch
         claim stones, continue playing or switch to next player based on the above result
         '''
@@ -1501,8 +1508,6 @@ class Board:
 
                 # board check is done on the last recipient pot for claim, continue or turn switch
                 result = self.ccs_checker(current_player, second_player)
-
-                current_player.play_on()
 
                 # return false if claim or turn switch occurs
                 # and true if continue
@@ -1536,8 +1541,6 @@ class Board:
 
                 # board check is done on the last recipient pot for claim, continue or turn switch
                 result = self.ccs_checker(current_player, second_player)
-
-                current_player.play_on()
 
                 # return false if claim or turn switch occurs
                 # and true if continue
@@ -1574,8 +1577,6 @@ class Board:
                 # board check is done on the last recipient pot for claim, continue or turn switch
                 result = self.ccs_checker(current_player, second_player)
 
-                current_player.play_on()
-
                 # return false if claim or turn switch occurs
                 # and true if continue
                 continue_play = self.enforce_ccs(result, current_player)
@@ -1608,8 +1609,6 @@ class Board:
 
                 # board check is done on the last recipient pot for claim, continue or turn switch
                 result = self.ccs_checker(current_player, second_player)
-
-                current_player.play_on()
 
                 # return false if claim or turn switch occurs
                 # and true if continue
@@ -1645,8 +1644,6 @@ class Board:
                 # board check is done on the last recipient pot for claim, continue or turn switch
                 result = self.ccs_checker(current_player, second_player)
 
-                current_player.play_on()
-
                 # return false if claim or turn switch occurs
                 # and true if continue
                 continue_play = self.enforce_ccs(result, current_player)
@@ -1675,8 +1672,6 @@ class Board:
                 current_player.play_on()
 
                 board_view(self, first_player, second_player)
-
-                current_player.play_on()
 
                 # board check is done on the last recipient pot for claim, continue or turn switch
                 result = self.ccs_checker(current_player, second_player)
@@ -1717,8 +1712,6 @@ class Board:
                 # board check is done on the last recipient pot for claim, continue or turn switch
                 result = self.ccs_checker(current_player, second_player)
 
-                current_player.play_on()
-
                 # return false if claim or turn switch occurs
                 # and true if continue
                 continue_play = self.enforce_ccs(result, current_player)
@@ -1752,8 +1745,6 @@ class Board:
 
                 # board check is done on the last recipient pot for claim, continue or turn switch
                 result = self.ccs_checker(current_player, second_player)
-
-                current_player.play_on()
 
                 # return false if claim or turn switch occurs
                 # and true if continue
@@ -1789,8 +1780,6 @@ class Board:
                 # board check is done on the last recipient pot for claim, continue or turn switch
                 result = self.ccs_checker(current_player, second_player)
 
-                current_player.play_on()
-
                 # return false if claim or turn switch occurs
                 # and true if continue
                 continue_play = self.enforce_ccs(result, current_player)
@@ -1824,8 +1813,6 @@ class Board:
 
                 # board check is done on the last recipient pot for claim, continue or turn switch
                 result = self.ccs_checker(current_player, second_player)
-
-                current_player.play_on()
 
                 # return false if claim or turn switch occurs
                 # and true if continue
@@ -1861,8 +1848,6 @@ class Board:
                 # board check is done on the last recipient pot for claim, continue or turn switch
                 result = self.ccs_checker(current_player, second_player)
 
-                current_player.play_on()
-
                 # return false if claim or turn switch occurs
                 # and true if continue
                 continue_play = self.enforce_ccs(result, current_player)
@@ -1897,8 +1882,6 @@ class Board:
                 # board check is done on the last recipient pot for claim, continue or turn switch
                 result = self.ccs_checker(current_player, second_player)
 
-                current_player.play_on()
-
                 # return false if claim or turn switch occurs
                 # and true if continue
                 continue_play = self.enforce_ccs(result, current_player)
@@ -1918,7 +1901,7 @@ init()
 # FUNCTIONS
 def board_view(board, player1, player2):
     '''
-    Displays both player's stats, current state of the board 
+    Displays both player's stats and current state of the board
     Runs a check for game WINNER or STALEMATE
 
     Example:
@@ -1932,7 +1915,6 @@ def board_view(board, player1, player2):
     # WINNER EMERGES (in player's colors)
     osagie WINS!
     '''
-    
     print("\n", "\t"*10, f"\n\t\tFIRST PLAYER: {Fore.LIGHTGREEN_EX} {player1.name}\t\t\t\t{player1.board_side.upper()}: 1, 2, 3, 4, 5, 6 {Fore.RESET}")
     print("\t\t___________________________________________________________________________")
     print(f"\t\tBoard: {player1.section_stones()} stones\n\t\tHand: {len(player1.hand)} stones\n\t\tCaptured: {len(player1.captured_stones)} stones | Claims: {int(len(player1.captured_stones)/4)}\t\tReserve:  {Fore.LIGHTBLUE_EX}{player1.captured_stones}{Fore.RESET}\n\t\tTOTAL: {player1.section_stones()+len(player1.hand)+len(player1.captured_stones)} stones\n")
@@ -1993,13 +1975,14 @@ def player_name():
     '''
     ensures that input is string
     and returns string in upper case
-    
+
     Example:
-    
+
     player_name() -->
-    
+
     OSAGIE
     '''
+
     while True:
         val = input("\n\t\tPlayer Name:   \n\t\t")
         if val.isdigit():
@@ -2008,7 +1991,7 @@ def player_name():
         return val.upper()
 
 def welc_scrn():
-    print("\n"*5,"\t"*4,"*****WELCOME*****")
+    print("\n"*50,"\t"*4,"*****WELCOME*****")
     print("\n"*2,"\t"*4,"*******TO********")
     print("\n"*3,"\t"*4,"*****OGIDISE*****")
     print("\n"*2,"\t"*4,"****BOARD GAME****")
