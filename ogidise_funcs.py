@@ -1,9 +1,9 @@
-import sys, re
+# import sys, re
 
-pkg = 'C:\\Users\\welcome\\Desktop\\MyFuncs'
+# pkg = 'C:\\Users\\welcome\\Desktop\\MyFuncs'
 
-if pkg not in sys.path:
-    sys.path.append(pkg)
+# if pkg not in sys.path:
+#     sys.path.append(pkg)
 
 from fave_app_funcs import generate_password, password_inp
 
