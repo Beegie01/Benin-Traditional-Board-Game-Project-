@@ -143,6 +143,8 @@ def retrieve():
     outputs saved board_obj, first_player_obj, second_player_obj
     '''
 
+    Found = False
+    
     # ask for the saved usernames
     prompt = "\nEnter password below to continue saved game:\nPASSWORD>\t"
     pword = password_inp(prompt)
@@ -169,6 +171,11 @@ def retrieve():
                 # when password is found
                 if v == pword:
                     board_attr, fp_attr, sp_attr, first_turn = dd['board_data'], dd['first_player'], dd['second_player'], dd['first_turn']
-                    print("Password Found!")
+                    print("\nPassword Found!")
+                    Found = True
 
-    return board_attr, fp_attr, sp_attr, first_turn
+    if Found:
+        return board_attr, fp_attr, sp_attr, first_turn
+
+    print("\nPassword Not Found!")
+    return '', '', '', ''

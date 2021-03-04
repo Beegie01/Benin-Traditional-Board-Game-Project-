@@ -21,316 +21,323 @@ board = Board()
 # umpire instance created
 ump = Player("Umpire")
 
-# start a new game or continue playing saved game
-mode = game_mode()
+START = True
+while START:
 
-# when continue
-if mode == 'c':
+    # start a new game or continue playing saved game
+    mode = game_mode()
 
-    contd_attr, fp_attr, sp_attr, FIRST_TURN = retrieve()
+    # when continue
+    if mode == 'c':
 
-    fp, sp = Player(fp_attr['name']), Player(sp_attr['name'])
+        contd_attr, fp_attr, sp_attr, FIRST_TURN = retrieve()
 
-    board.__dict__, fp.__dict__, sp.__dict__ = contd_attr, fp_attr, sp_attr
+        # When incorrect password is given
+        if contd_attr == '':
+            continue
 
-    GAME_ON = True
-    while GAME_ON:
+        fp, sp = Player(fp_attr['name']), Player(sp_attr['name'])
 
-        board_view(board, fp, sp)
+        board.__dict__, fp.__dict__, sp.__dict__ = contd_attr, fp_attr, sp_attr
 
-        play_on()
-
-        while FIRST_TURN:
-
-            # first player selects where to begin picking from
-            pot_obj = fp.fp_select_pot(board)
-
-            # check if player chose to pick from an empty pot
-            EMPTY = fp.check_if_empty(pot_obj)
-
-            # another chance for player to pick from a non-empty pot
-            if EMPTY:
-                continue
-
-            # player carries picked stones in their hand
-            fp.from_pot_to_hand(pot_obj)
-
-            play_on()
+        GAME_ON = True
+        while GAME_ON:
 
             board_view(board, fp, sp)
 
             play_on()
 
-            # stones in player's hand gets shared automatically accross board
-            board.distribute_stones(fp)
+            while FIRST_TURN:
 
-            play_on()
+                # first player selects where to begin picking from
+                pot_obj = fp.fp_select_pot(board)
 
-            board_view(board, fp, sp)
+                # check if player chose to pick from an empty pot
+                EMPTY = fp.check_if_empty(pot_obj)
 
-            play_on()
+                # another chance for player to pick from a non-empty pot
+                if EMPTY:
+                    continue
 
-            # check the last recipient pot for CLAIM, CONTINUE or STOP
-            result = board.ccs_checker(fp, sp)
+                # player carries picked stones in their hand
+                fp.from_pot_to_hand(pot_obj)
 
-            # returns true if turn continues
-            # returns false if claim occurs or turn stops
-            CONTINUE_PLAY = board.enforce_ccs(result, fp)
+                play_on()
 
-            play_on()
+                board_view(board, fp, sp)
 
-            board_view(board, fp, sp)
+                play_on()
 
-            play_on()
+                # stones in player's hand gets shared automatically accross board
+                board.distribute_stones(fp)
 
-            if CONTINUE_PLAY:
-                # returns false when player eventually hits an empty pot
-                FIRST_TURN = board.continue_playing(fp, fp, sp)
+                play_on()
 
-            FIRST_TURN = False
+                board_view(board, fp, sp)
 
-        board_view(board, fp, sp)
+                play_on()
 
-        # check for exit
-        if exit_play():
-            # saving game progress
-            if ask_to_save():
-                save_progress(board_obj=board, first_player_obj=fp, second_player_obj=sp, FIRST_TURN=False)
-            print("\n\nEXITING GAME...\nThanks For Playing <<<OGIDISE 2021>>>!")
-            quit()
+                # check the last recipient pot for CLAIM, CONTINUE or STOP
+                result = board.ccs_checker(fp, sp)
 
-        # second player's turn
-        SECOND_TURN = True
-        while SECOND_TURN:
+                # returns true if turn continues
+                # returns false if claim occurs or turn stops
+                CONTINUE_PLAY = board.enforce_ccs(result, fp)
 
-            # first player selects where to begin picking from
-            # first player selects where to begin picking from
-            pot_obj = sp.sp_select_pot(board)
+                play_on()
 
-            # check if player chose to pick from an empty pot
-            EMPTY = sp.check_if_empty(pot_obj)
+                board_view(board, fp, sp)
 
-            # another chance for player to pick from a non-empty pot
-            if EMPTY:
-                continue
+                play_on()
 
-            # player carries picked stones in their hand
-            sp.from_pot_to_hand(pot_obj)
+                if CONTINUE_PLAY:
+                    # returns false when player eventually hits an empty pot
+                    FIRST_TURN = board.continue_playing(fp, fp, sp)
 
-            play_on()
+                FIRST_TURN = False
 
             board_view(board, fp, sp)
-
-            play_on()
-
-            # stones in player's hand gets shared automatically
-            board.distribute_stones(sp)
-
-            play_on()
-
-            board_view(board, fp, sp)
-
-            play_on()
-
-            # check the last recipient pot for CLAIM, CONTINUE or STOP
-            result = board.ccs_checker(sp, fp)
-
-            # returns true if turn continues
-            # returns false if claim occurs or turn stops
-            CONTINUE_PLAY = board.enforce_ccs(result, sp)
-
-            if CONTINUE_PLAY:
-
-                # returns false when player eventually hits an empty pot
-                SECOND_TURN = board.continue_playing(sp, fp, sp)
-
-            SECOND_TURN = False
 
             # check for exit
             if exit_play():
                 # saving game progress
                 if ask_to_save():
-                    save_progress(board_obj=board, first_player_obj=fp, second_player_obj=sp, FIRST_TURN=True)
+                    save_progress(board_obj=board, first_player_obj=fp, second_player_obj=sp, FIRST_TURN=False)
                 print("\n\nEXITING GAME...\nThanks For Playing <<<OGIDISE 2021>>>!")
                 quit()
 
-else:
+            # second player's turn
+            SECOND_TURN = True
+            while SECOND_TURN:
 
-    # two player names taken
-    name1 = player_name()
+                # first player selects where to begin picking from
+                # first player selects where to begin picking from
+                pot_obj = sp.sp_select_pot(board)
 
-    name2 = player_name()
+                # check if player chose to pick from an empty pot
+                EMPTY = sp.check_if_empty(pot_obj)
 
-    # two player instances created
-    p1 = Player(name1)
+                # another chance for player to pick from a non-empty pot
+                if EMPTY:
+                    continue
 
-    p2 = Player(name2)
+                # player carries picked stones in their hand
+                sp.from_pot_to_hand(pot_obj)
 
-    # first player picks head or tail
-    coin_side = p1.pick_coin_sides()
+                play_on()
 
-    # umpire tosses coin
-    starter = ump.game_starter(coin_side, p1, p2)
+                board_view(board, fp, sp)
 
-    play_on()
+                play_on()
 
-    # players are assigned instances whick determine order of turns based on coin toss
-    if starter == p1.name:
-        fp = Player(name1)
-        sp = Player(name2)
+                # stones in player's hand gets shared automatically
+                board.distribute_stones(sp)
+
+                play_on()
+
+                board_view(board, fp, sp)
+
+                play_on()
+
+                # check the last recipient pot for CLAIM, CONTINUE or STOP
+                result = board.ccs_checker(sp, fp)
+
+                # returns true if turn continues
+                # returns false if claim occurs or turn stops
+                CONTINUE_PLAY = board.enforce_ccs(result, sp)
+
+                if CONTINUE_PLAY:
+
+                    # returns false when player eventually hits an empty pot
+                    SECOND_TURN = board.continue_playing(sp, fp, sp)
+
+                SECOND_TURN = False
+
+                # check for exit
+                if exit_play():
+                    # saving game progress
+                    if ask_to_save():
+                        save_progress(board_obj=board, first_player_obj=fp, second_player_obj=sp, FIRST_TURN=True)
+                    print("\n\nEXITING GAME...\nThanks For Playing <<<OGIDISE 2021>>>!")
+                    quit()
 
     else:
-        fp = Player(name2)
-        sp = Player(name1)
 
-    # players are assigned sides based on coin toss
-    ump.assign_sections(board, fp, sp)
+        # two player names taken
+        name1 = player_name()
 
-    # visualization of empty game board
-    board_view(board, fp, sp)
+        name2 = player_name()
 
-    # game speed control
-    # screen pause
-    play_on()
+        # two player instances created
+        p1 = Player(name1)
 
-    print("\n""\t"*2, "FILLING GAME BOARD WITH FOUR STONES IN EACH POT\n")
+        p2 = Player(name2)
 
-    play_on()
+        # first player picks head or tail
+        coin_side = p1.pick_coin_sides()
 
-    # all 12 pots are filled with stones
-    ump.pot_fill(fp.pot_1)
-    ump.pot_fill(fp.pot_2)
-    ump.pot_fill(fp.pot_3)
-    ump.pot_fill(fp.pot_4)
-    ump.pot_fill(fp.pot_5)
-    ump.pot_fill(fp.pot_6)
-
-    ump.pot_fill(sp.pot_1)
-    ump.pot_fill(sp.pot_2)
-    ump.pot_fill(sp.pot_3)
-    ump.pot_fill(sp.pot_4)
-    ump.pot_fill(sp.pot_5)
-    ump.pot_fill(sp.pot_6)
-
-    GAME_ON = True
-    while GAME_ON:
-
-        board_view(board, fp, sp)
+        # umpire tosses coin
+        starter = ump.game_starter(coin_side, p1, p2)
 
         play_on()
 
-        # first player's turn
-        FIRST_TURN = True
-        while FIRST_TURN:
+        # players are assigned instances whick determine order of turns based on coin toss
+        if starter == p1.name:
+            fp = Player(name1)
+            sp = Player(name2)
 
-            # first player selects where to begin picking from
-            pot_obj = fp.fp_select_pot(board)
+        else:
+            fp = Player(name2)
+            sp = Player(name1)
 
-            # check if player chose to pick from an empty pot
-            EMPTY = fp.check_if_empty(pot_obj)
+        # players are assigned sides based on coin toss
+        ump.assign_sections(board, fp, sp)
 
-            # another chance for player to pick from a non-empty pot
-            if EMPTY:
-                continue
-
-            # player carries picked stones in their hand
-            fp.from_pot_to_hand(pot_obj)
-
-            play_on()
-
-            board_view(board, fp, sp)
-
-            play_on()
-
-            # stones in player's hand gets shared automatically accross board
-            board.distribute_stones(fp)
-
-            play_on()
-
-            board_view(board, fp, sp)
-
-            play_on()
-
-            # check the last recipient pot for CLAIM, CONTINUE or STOP
-            result = board.ccs_checker(fp, sp)
-
-            # returns true if turn continues
-            # returns false if claim occurs or turn stops
-            CONTINUE_PLAY = board.enforce_ccs(result, fp)
-
-            play_on()
-
-            board_view(board, fp, sp)
-
-            play_on()
-
-            if CONTINUE_PLAY:
-                # returns false when player eventually hits an empty pot
-                FIRST_TURN = board.continue_playing(fp, fp, sp)
-
-            FIRST_TURN = False
-
+        # visualization of empty game board
         board_view(board, fp, sp)
 
-        # check for exit
-        if exit_play():
-            # saving game progress
-            if ask_to_save():
-                save_progress(board_obj=board, first_player_obj=fp, second_player_obj=sp, FIRST_TURN=False)
-            print("\n\nEXITING GAME...\nThanks For Playing <<<OGIDISE 2021>>>!")
-            quit()
+        # game speed control
+        # screen pause
+        play_on()
 
-        # second player's turn
-        SECOND_TURN = True
-        while SECOND_TURN:
+        print("\n""\t"*2, "FILLING GAME BOARD WITH FOUR STONES IN EACH POT\n")
 
-            # first player selects where to begin picking from
-            # first player selects where to begin picking from
-            pot_obj = sp.sp_select_pot(board)
+        play_on()
 
-            # check if player chose to pick from an empty pot
-            EMPTY = sp.check_if_empty(pot_obj)
+        # all 12 pots are filled with stones
+        ump.pot_fill(fp.pot_1)
+        ump.pot_fill(fp.pot_2)
+        ump.pot_fill(fp.pot_3)
+        ump.pot_fill(fp.pot_4)
+        ump.pot_fill(fp.pot_5)
+        ump.pot_fill(fp.pot_6)
 
-            # another chance for player to pick from a non-empty pot
-            if EMPTY:
-                continue
+        ump.pot_fill(sp.pot_1)
+        ump.pot_fill(sp.pot_2)
+        ump.pot_fill(sp.pot_3)
+        ump.pot_fill(sp.pot_4)
+        ump.pot_fill(sp.pot_5)
+        ump.pot_fill(sp.pot_6)
 
-            # player carries picked stones in their hand
-            sp.from_pot_to_hand(pot_obj)
-
-            play_on()
+        GAME_ON = True
+        while GAME_ON:
 
             board_view(board, fp, sp)
 
             play_on()
 
-            # stones in player's hand gets shared automatically
-            board.distribute_stones(sp)
+            # first player's turn
+            FIRST_TURN = True
+            while FIRST_TURN:
 
-            play_on()
+                # first player selects where to begin picking from
+                pot_obj = fp.fp_select_pot(board)
+
+                # check if player chose to pick from an empty pot
+                EMPTY = fp.check_if_empty(pot_obj)
+
+                # another chance for player to pick from a non-empty pot
+                if EMPTY:
+                    continue
+
+                # player carries picked stones in their hand
+                fp.from_pot_to_hand(pot_obj)
+
+                play_on()
+
+                board_view(board, fp, sp)
+
+                play_on()
+
+                # stones in player's hand gets shared automatically accross board
+                board.distribute_stones(fp)
+
+                play_on()
+
+                board_view(board, fp, sp)
+
+                play_on()
+
+                # check the last recipient pot for CLAIM, CONTINUE or STOP
+                result = board.ccs_checker(fp, sp)
+
+                # returns true if turn continues
+                # returns false if claim occurs or turn stops
+                CONTINUE_PLAY = board.enforce_ccs(result, fp)
+
+                play_on()
+
+                board_view(board, fp, sp)
+
+                play_on()
+
+                if CONTINUE_PLAY:
+                    # returns false when player eventually hits an empty pot
+                    FIRST_TURN = board.continue_playing(fp, fp, sp)
+
+                FIRST_TURN = False
 
             board_view(board, fp, sp)
-
-            play_on()
-
-            # check the last recipient pot for CLAIM, CONTINUE or STOP
-            result = board.ccs_checker(sp, fp)
-
-            # returns true if turn continues
-            # returns false if claim occurs or turn stops
-            CONTINUE_PLAY = board.enforce_ccs(result, sp)
-
-            if CONTINUE_PLAY:
-
-                # returns false when player eventually hits an empty pot
-                SECOND_TURN = board.continue_playing(sp, fp, sp)
-
-            SECOND_TURN = False
 
             # check for exit
             if exit_play():
                 # saving game progress
                 if ask_to_save():
-                    save_progress(board_obj=board, first_player_obj=fp, second_player_obj=sp, FIRST_TURN=True)
+                    save_progress(board_obj=board, first_player_obj=fp, second_player_obj=sp, FIRST_TURN=False)
                 print("\n\nEXITING GAME...\nThanks For Playing <<<OGIDISE 2021>>>!")
                 quit()
+
+            # second player's turn
+            SECOND_TURN = True
+            while SECOND_TURN:
+
+                # first player selects where to begin picking from
+                # first player selects where to begin picking from
+                pot_obj = sp.sp_select_pot(board)
+
+                # check if player chose to pick from an empty pot
+                EMPTY = sp.check_if_empty(pot_obj)
+
+                # another chance for player to pick from a non-empty pot
+                if EMPTY:
+                    continue
+
+                # player carries picked stones in their hand
+                sp.from_pot_to_hand(pot_obj)
+
+                play_on()
+
+                board_view(board, fp, sp)
+
+                play_on()
+
+                # stones in player's hand gets shared automatically
+                board.distribute_stones(sp)
+
+                play_on()
+
+                board_view(board, fp, sp)
+
+                play_on()
+
+                # check the last recipient pot for CLAIM, CONTINUE or STOP
+                result = board.ccs_checker(sp, fp)
+
+                # returns true if turn continues
+                # returns false if claim occurs or turn stops
+                CONTINUE_PLAY = board.enforce_ccs(result, sp)
+
+                if CONTINUE_PLAY:
+
+                    # returns false when player eventually hits an empty pot
+                    SECOND_TURN = board.continue_playing(sp, fp, sp)
+
+                SECOND_TURN = False
+
+                # check for exit
+                if exit_play():
+                    # saving game progress
+                    if ask_to_save():
+                        save_progress(board_obj=board, first_player_obj=fp, second_player_obj=sp, FIRST_TURN=True)
+                    print("\n\nEXITING GAME...\nThanks For Playing <<<OGIDISE 2021>>>!")
+                    quit()
