@@ -1,9 +1,9 @@
-import sys
+# import sys
 
-pkg = 'C:\\Users\\welcome\\Desktop\\MyFuncs'
+# pkg = 'C:\\Users\\welcome\\Desktop\\MyFuncs'
 
-if pkg not in sys.path:
-    sys.path.append(pkg)
+# if pkg not in sys.path:
+#     sys.path.append(pkg)
 
 from fave_app_funcs import generate_password, password_inp, ask_to_save, play_on, exit_play, game_mode
 
