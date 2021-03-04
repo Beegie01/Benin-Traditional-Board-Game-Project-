@@ -171,7 +171,7 @@ class Player(Board):
         First player selects which of his pots to pick from
         Can only select a pot between 1-6 (Side A)
         '''
-        print(f"{self.name}'s TURN:\n\nChoose pot to pick from?")
+        print(f"\n\n{self.name}'s TURN:\n\nChoose pot to pick from?")
         acc_range = range(1,7)
         pick = -1
 
@@ -214,7 +214,7 @@ class Player(Board):
         Second player selects which of his pots to pick from
         Can only select between 7-12 (Side B)
         '''
-        print(f"{self.name}'s TURN:\n\nChoose pot to pick from?")
+        print(f"\n\n{self.name}'s TURN:\n\nChoose pot to pick from?")
         acc_range = range(7,13)
         pick = -1
 
@@ -352,28 +352,3 @@ class Player(Board):
             return self.hand.pop(0)
         except IndexError:
             print(f"\n{self.name} has {len(self.hand)} in his hand")
-
-
-    def play_on(self):
-        response = self.quick_check()
-        if response:
-            pass
-
-    def quick_check(self):
-        while True:
-            val = input("\nPress Enter to continue, or 'e' to exit game:\n")
-
-            acc_range = ['', 'e', 'exit']
-            if val.lower() not in acc_range:
-                print(f"\n{val} is not valid!")
-                continue
-            else:
-                if val.lower() == '':
-                    '\n'
-                    return True
-                elif val.lower() in ['e', 'exit']:
-                    return self.exit_play()
-
-    def exit_play(self):
-        print(f"\n\nThanks for playing!")
-        quit()
