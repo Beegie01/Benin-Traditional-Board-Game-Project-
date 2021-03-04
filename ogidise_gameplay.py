@@ -53,10 +53,10 @@ while START:
                 pot_obj = fp.fp_select_pot(board)
 
                 # check if player chose to pick from an empty pot
-                EMPTY = fp.check_if_empty(pot_obj)
+                POT_IS_EMPTY = fp.check_if_empty(pot_obj)
 
                 # another chance for player to pick from a non-empty pot
-                if EMPTY:
+                if POT_IS_EMPTY:
                     continue
 
                 # player carries picked stones in their hand
@@ -78,11 +78,11 @@ while START:
                 play_on()
 
                 # check the last recipient pot for CLAIM, CONTINUE or STOP
-                result = board.ccs_checker(fp, sp)
+                CLAIM_CONT_STOP = board.ccs_checker(fp, sp)
 
                 # returns true if turn continues
                 # returns false if claim occurs or turn stops
-                CONTINUE_PLAY = board.enforce_ccs(result, fp)
+                CONTINUE_PLAY = board.enforce_ccs(CLAIM_CONT_STOP, fp)
 
                 play_on()
 
@@ -115,10 +115,10 @@ while START:
                 pot_obj = sp.sp_select_pot(board)
 
                 # check if player chose to pick from an empty pot
-                EMPTY = sp.check_if_empty(pot_obj)
+                POT_IS_EMPTY = sp.check_if_empty(pot_obj)
 
                 # another chance for player to pick from a non-empty pot
-                if EMPTY:
+                if POT_IS_EMPTY:
                     continue
 
                 # player carries picked stones in their hand
@@ -140,18 +140,18 @@ while START:
                 play_on()
 
                 # check the last recipient pot for CLAIM, CONTINUE or STOP
-                result = board.ccs_checker(sp, fp)
+                CLAIM_CONT_STOP = board.ccs_checker(sp, fp)
 
                 # returns true if turn continues
                 # returns false if claim occurs or turn stops
-                CONTINUE_PLAY = board.enforce_ccs(result, sp)
+                CONTINUE_PLAY = board.enforce_ccs(CLAIM_CONT_STOP, sp)
 
                 if CONTINUE_PLAY:
 
                     # returns false when player eventually hits an empty pot
                     SECOND_TURN = board.continue_playing(sp, fp, sp)
 
-                SECOND_TURN = False
+                SECOND_TURN, FIRST_TURN = False, True
 
                 # check for exit
                 if exit_play():
@@ -161,6 +161,9 @@ while START:
                     print("\n\nEXITING GAME...\nThanks For Playing <<<OGIDISE 2021>>>!")
                     quit()
 
+
+
+    # start playing new game
     else:
 
         # two player names taken
@@ -234,10 +237,10 @@ while START:
                 pot_obj = fp.fp_select_pot(board)
 
                 # check if player chose to pick from an empty pot
-                EMPTY = fp.check_if_empty(pot_obj)
+                POT_IS_EMPTY = fp.check_if_empty(pot_obj)
 
                 # another chance for player to pick from a non-empty pot
-                if EMPTY:
+                if POT_IS_EMPTY:
                     continue
 
                 # player carries picked stones in their hand
@@ -259,11 +262,11 @@ while START:
                 play_on()
 
                 # check the last recipient pot for CLAIM, CONTINUE or STOP
-                result = board.ccs_checker(fp, sp)
+                CLAIM_CONT_STOP = board.ccs_checker(fp, sp)
 
                 # returns true if turn continues
                 # returns false if claim occurs or turn stops
-                CONTINUE_PLAY = board.enforce_ccs(result, fp)
+                CONTINUE_PLAY = board.enforce_ccs(CLAIM_CONT_STOP, fp)
 
                 play_on()
 
@@ -296,10 +299,10 @@ while START:
                 pot_obj = sp.sp_select_pot(board)
 
                 # check if player chose to pick from an empty pot
-                EMPTY = sp.check_if_empty(pot_obj)
+                POT_IS_EMPTY = sp.check_if_empty(pot_obj)
 
                 # another chance for player to pick from a non-empty pot
-                if EMPTY:
+                if POT_IS_EMPTY:
                     continue
 
                 # player carries picked stones in their hand
@@ -321,11 +324,11 @@ while START:
                 play_on()
 
                 # check the last recipient pot for CLAIM, CONTINUE or STOP
-                result = board.ccs_checker(sp, fp)
+                CLAIM_CONT_STOP = board.ccs_checker(sp, fp)
 
                 # returns true if turn continues
                 # returns false if claim occurs or turn stops
-                CONTINUE_PLAY = board.enforce_ccs(result, sp)
+                CONTINUE_PLAY = board.enforce_ccs(CLAIM_CONT_STOP, sp)
 
                 if CONTINUE_PLAY:
 

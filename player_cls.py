@@ -176,7 +176,7 @@ class Player(Board):
         pick = -1
 
         while pick not in acc_range:
-            val = input("Select a non-empty pot between 1-6:\n")
+            val = input("Select a non-empty pot between 1-6:\nPOT>\t")
             try:
                 pick = int(val)
             except:
@@ -219,7 +219,7 @@ class Player(Board):
         pick = -1
 
         while pick not in acc_range:
-            val = input("Select a non-empty pot between 7-12:\n")
+            val = input("Select a non-empty pot between 7-12:\nPOT>\t")
             try:
                 pick = int(val)
             except:
